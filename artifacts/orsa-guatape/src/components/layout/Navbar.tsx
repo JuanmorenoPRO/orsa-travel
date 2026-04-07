@@ -46,7 +46,17 @@ export function Navbar() {
         }`}
       >
         <div className="container mx-auto px-4 h-20 flex items-center justify-between">
-          <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center gap-3 z-50">
+          <Link
+            href="/"
+            onClick={(e) => {
+              setIsOpen(false);
+              if (location === '/') {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }
+            }}
+            className="flex items-center gap-3 z-50"
+          >
             <img src={logoImg} alt="ORSA Guatapé" className="h-10 w-auto object-contain" />
             <div className="flex flex-col">
               <span className="font-serif text-2xl font-bold tracking-wider text-white leading-none">ORSA</span>
