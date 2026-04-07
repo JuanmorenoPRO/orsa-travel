@@ -122,7 +122,7 @@ export function Navbar() {
 
       {showForm && (
         <ReservationForm
-          experience="una experiencia ORSA"
+          selectExperience
           onClose={() => setShowForm(false)}
         />
       )}

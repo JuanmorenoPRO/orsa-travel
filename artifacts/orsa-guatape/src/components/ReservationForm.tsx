@@ -5,23 +5,30 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
+const EXPERIENCES = [
+  "ORSA Horizon",
+  "ORSA Adrenaline",
+  "ORSA Signature",
+];
+
 const schema = z.object({
   name: z.string().min(2, "Ingresa tu nombre"),
   phone: z.string().min(7, "Ingresa un teléfono válido"),
   people: z.string().min(1, "Cuántas personas?"),
   date: z.string().min(1, "Selecciona una fecha"),
-  experience: z.string(),
+  experience: z.string().min(1, "Selecciona una experiencia"),
   notes: z.string().optional(),
 });
 
 type FormValues = z.infer<typeof schema>;
 
 interface ReservationFormProps {
-  experience: string;
+  experience?: string;
+  selectExperience?: boolean;
   onClose: () => void;
 }
 
-export default function ReservationForm({ experience, onClose }: ReservationFormProps) {
+export default function ReservationForm({ experience = "", selectExperience = false, onClose }: ReservationFormProps) {
   const {
     register,
     handleSubmit,
@@ -147,12 +154,30 @@ export default function ReservationForm({ experience, onClose }: ReservationForm
             <label className="text-white/50 text-xs uppercase tracking-wider block mb-2">
               Experiencia
             </label>
-            <input
-              {...register("experience")}
-              readOnly
-              className="w-full bg-primary/10 border border-primary/20 text-primary/80 px-4 py-3 text-sm outline-none cursor-default"
-              data-testid="input-experience"
-            />
+            {selectExperience ? (
+              <>
+                <select
+                  {...register("experience")}
+                  className="w-full bg-background border border-white/10 focus:border-primary text-white px-4 py-3 text-sm outline-none transition-colors"
+                  data-testid="select-experience"
+                >
+                  <option value="">Selecciona una experiencia...</option>
+                  {EXPERIENCES.map((exp) => (
+                    <option key={exp} value={exp}>{exp}</option>
+                  ))}
+                </select>
+                {errors.experience && (
+                  <p className="text-destructive text-xs mt-1">{errors.experience.message}</p>
+                )}
+              </>
+            ) : (
+              <input
+                {...register("experience")}
+                readOnly
+                className="w-full bg-primary/10 border border-primary/20 text-primary/80 px-4 py-3 text-sm outline-none cursor-default"
+                data-testid="input-experience"
+              />
+            )}
           </div>
 
           <div>
