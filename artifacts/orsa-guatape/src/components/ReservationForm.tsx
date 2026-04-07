@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { X } from "lucide-react";
+import { X, MessageCircle } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -169,9 +169,19 @@ export default function ReservationForm({ experience, onClose }: ReservationForm
             />
           </div>
 
+          <div className="flex items-start gap-3 px-4 py-4 rounded-sm border border-primary/30 bg-primary/5">
+            <div className="mt-0.5 shrink-0 w-7 h-7 rounded-full bg-primary/15 flex items-center justify-center">
+              <MessageCircle className="w-4 h-4 text-primary" />
+            </div>
+            <p className="text-white/75 text-sm font-light leading-relaxed">
+              En <span className="text-primary font-medium">ORSA</span> queremos que vivas la mejor experiencia, por eso finalizaremos la reserva con un{" "}
+              <span className="text-white/90">asesor personalizado.</span>
+            </p>
+          </div>
+
           <button
             type="submit"
-            className="w-full py-4 bg-primary text-background font-bold uppercase tracking-widest text-sm hover:bg-primary/90 transition-all duration-300 mt-2"
+            className="w-full py-4 bg-primary text-background font-bold uppercase tracking-widest text-sm hover:bg-primary/90 transition-all duration-300"
             data-testid="button-submit-reservation"
           >
             Enviar por WhatsApp
