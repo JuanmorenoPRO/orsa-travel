@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { Link } from "wouter";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown, Shield, Star, Crown, Play, Quote, ArrowRight } from "lucide-react";
@@ -97,9 +97,17 @@ const testimonials = [
 
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const { scrollY } = useScroll();
   const heroY = useTransform(scrollY, [0, 600], [0, 120]);
   const heroOpacity = useTransform(scrollY, [0, 400], [1, 0]);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = true;
+    video.play().catch(() => {});
+  }, []);
 
   return (
     <div className="bg-background text-foreground">
@@ -111,6 +119,7 @@ export default function Home() {
       >
         <motion.div style={{ y: heroY }} className="absolute inset-0 z-0">
           <video
+            ref={videoRef}
             autoPlay
             loop
             muted
