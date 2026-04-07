@@ -1,0 +1,102 @@
+Create a high-end, visually stunning website for a luxury water experiences brand called "ORSA Guatapé".
+
+Brand concept:
+ORSA is not a boat rental company. It offers premium, private and personalized nautical experiences in Guatapé, Colombia.
+
+Core values:
+
+Safety
+Experience
+Exclusivity
+
+Slogan:
+"Disfruta tu vida en el agua!"
+
+The design must feel luxury, modern and emotional, similar to premium travel brands.
+
+Pages and Structure:
+Homepage
+Fullscreen hero with background video (wakeboard or yacht)
+Overlay text:
+"Disfruta tu vida en el agua"
+"Experiencias náuticas exclusivas en Guatapé"
+CTA button: "Explorar experiencias"
+
+Sections:
+
+About ORSA (emotional storytelling)
+Core values (3 columns: Seguridad, Experiencia, Exclusividad)
+Experiences preview (cards)
+Video section (customer experiences)
+Testimonials
+Final CTA
+Experiences Section
+
+Create 3 main experiences:
+
+ORSA Horizon:
+Relaxing boat tour around the Guatapé reservoir with storytelling and audio guide.
+ORSA Adrenaline:
+High-energy water sports like wakeboard and donut ride.
+ORSA Signature:
+Fully personalized luxury experience.
+
+Each experience card must include:
+
+High-quality image
+Short emotional description
+Button: "Quiero vivir esta experiencia"
+Experience Detail Page
+
+When clicking an experience:
+
+Hero image or video
+Emotional storytelling text
+“Imagina esto…” section
+Key highlights
+Tips (like in the provided designs)
+What’s included
+
+CTA button:
+"Reservar experiencia"
+
+Reservation Form
+
+Fields:
+
+Name
+Phone
+Number of people
+Date
+Experience (auto-filled)
+Notes
+
+On submit:
+Generate a WhatsApp message:
+
+"Hola ORSA 👋
+Quiero vivir la experiencia [EXPERIENCE]
+Nombre: [NAME]
+Personas: [#]
+Fecha: [DATE]
+Quiero más información 🙌"
+
+Redirect to:
+https://wa.me/57XXXXXXXXXX?text=ENCODED_TEXT
+
+Design System
+Use Tailwind CSS
+Dark luxury palette (deep blue, black, white, gold accents)
+Smooth animations and transitions
+Elegant typography (serif for titles, sans-serif for body)
+Glassmorphism or subtle blur effects
+Mobile-first design
+Extra Features
+Floating WhatsApp button
+Sticky navbar
+Image gallery
+Video embedding
+Optimized performance
+
+Goal:
+Create a website that emotionally connects with users and maximizes conversions into WhatsApp reservations.
