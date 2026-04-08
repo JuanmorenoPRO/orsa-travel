@@ -85,18 +85,20 @@ export function Navbar() {
             <div className="flex items-center gap-1 border border-white/15 px-1 py-1">
               <button
                 onClick={() => setLang('es')}
-                className={`px-2 py-0.5 text-xs font-semibold uppercase tracking-wider transition-all duration-200 ${
+                className={`flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold uppercase tracking-wider transition-all duration-200 ${
                   lang === 'es' ? 'bg-primary text-background' : 'text-white/40 hover:text-white/70'
                 }`}
               >
+                <span className="text-sm leading-none">🇨🇴</span>
                 ES
               </button>
               <button
                 onClick={() => setLang('en')}
-                className={`px-2 py-0.5 text-xs font-semibold uppercase tracking-wider transition-all duration-200 ${
+                className={`flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold uppercase tracking-wider transition-all duration-200 ${
                   lang === 'en' ? 'bg-primary text-background' : 'text-white/40 hover:text-white/70'
                 }`}
               >
+                <span className="text-sm leading-none">🇺🇸</span>
                 EN
               </button>
             </div>
@@ -141,18 +143,20 @@ export function Navbar() {
               <div className="flex items-center gap-2 border border-white/15 px-2 py-1">
                 <button
                   onClick={() => setLang('es')}
-                  className={`px-3 py-1 text-sm font-semibold uppercase tracking-wider transition-all duration-200 ${
+                  className={`flex items-center gap-2 px-3 py-1.5 text-sm font-semibold uppercase tracking-wider transition-all duration-200 ${
                     lang === 'es' ? 'bg-primary text-background' : 'text-white/40'
                   }`}
                 >
+                  <span className="text-base leading-none">🇨🇴</span>
                   ES
                 </button>
                 <button
                   onClick={() => setLang('en')}
-                  className={`px-3 py-1 text-sm font-semibold uppercase tracking-wider transition-all duration-200 ${
+                  className={`flex items-center gap-2 px-3 py-1.5 text-sm font-semibold uppercase tracking-wider transition-all duration-200 ${
                     lang === 'en' ? 'bg-primary text-background' : 'text-white/40'
                   }`}
                 >
+                  <span className="text-base leading-none">🇺🇸</span>
                   EN
                 </button>
               </div>
