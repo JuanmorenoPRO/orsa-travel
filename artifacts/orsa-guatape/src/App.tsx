@@ -11,6 +11,7 @@ import Home from "@/pages/Home";
 import ExperienceHorizon from "@/pages/ExperienceHorizon";
 import ExperienceAdrenaline from "@/pages/ExperienceAdrenaline";
 import ExperienceSignature from "@/pages/ExperienceSignature";
+import About from "@/pages/About";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
@@ -34,6 +35,7 @@ function Router() {
           <Route path="/experiencia/horizon" component={ExperienceHorizon} />
           <Route path="/experiencia/adrenaline" component={ExperienceAdrenaline} />
           <Route path="/experiencia/signature" component={ExperienceSignature} />
+          <Route path="/acerca-de" component={About} />
           <Route component={NotFound} />
         </Switch>
       </main>

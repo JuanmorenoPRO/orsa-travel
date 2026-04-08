@@ -28,6 +28,7 @@ export function Navbar() {
     { name: t.nav.horizon, path: '/experiencia/horizon' },
     { name: t.nav.adrenaline, path: '/experiencia/adrenaline' },
     { name: t.nav.signature, path: '/experiencia/signature' },
+    { name: t.nav.about, path: '/acerca-de' },
   ];
 
   const handleReservar = () => {

@@ -1,7 +1,11 @@
 import { useRef, useEffect } from "react";
 import { Link } from "wouter";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ChevronDown, Shield, Star, Crown, Play, Quote, ArrowRight } from "lucide-react";
+import {
+  ChevronDown, Play, Quote, ArrowRight,
+  ShieldCheck, Headphones, Anchor, Lock, Handshake, Camera,
+  Waves, Zap, Crown,
+} from "lucide-react";
 import heroVideo from "@assets/video1_1775523574157.mp4";
 import embalseImg from "@assets/experiencia_embalse_1775523360540.jpeg";
 import wakeboardImg from "@assets/experiecia_wakeboard_1775523360538.jpeg";
@@ -20,10 +24,19 @@ const stagger = {
   viewport: { once: true },
 };
 
-const valueIcons = [
-  <Shield className="w-8 h-8" />,
-  <Star className="w-8 h-8" />,
-  <Crown className="w-8 h-8" />,
+const featureIcons = [
+  <ShieldCheck className="w-5 h-5" />,
+  <Headphones className="w-5 h-5" />,
+  <Anchor className="w-5 h-5" />,
+  <Lock className="w-5 h-5" />,
+  <Handshake className="w-5 h-5" />,
+  <Camera className="w-5 h-5" />,
+];
+
+const expIcons = [
+  <Waves className="w-5 h-5 text-primary" />,
+  <Zap className="w-5 h-5 text-primary" />,
+  <Crown className="w-5 h-5 text-primary" />,
 ];
 
 const experienceIds = ["horizon", "adrenaline", "signature"];
@@ -51,7 +64,7 @@ export default function Home() {
 
   return (
     <div className="bg-background text-foreground">
-      {/* HERO */}
+      {/* ── HERO ── */}
       <section
         ref={heroRef}
         className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden"
@@ -133,79 +146,118 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* ABOUT */}
-      <section className="py-32 px-4" data-testid="section-about">
+      {/* ── WHY ORSA? ── */}
+      <section className="py-32 px-4" data-testid="section-why">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <motion.div {...fadeUp}>
-              <p className="text-primary uppercase tracking-[0.4em] text-xs mb-6">{t.home.aboutTag}</p>
-              <h2 className="font-serif text-5xl md:text-6xl font-light text-white mb-8 leading-tight">
-                {t.home.aboutTitle1}
-                <br />
-                <span className="italic text-white/60">{t.home.aboutTitle2}</span>
-              </h2>
-              <div className="w-16 h-px bg-primary mb-8" />
-              <p className="text-white/70 leading-relaxed mb-6 text-lg font-light">
-                {t.home.aboutP1}{" "}
-                <span className="text-primary font-medium">{t.home.aboutName}</span>
-                {t.home.aboutP1end}
-              </p>
-              <p className="text-white/60 leading-relaxed font-light">{t.home.aboutP2}</p>
+          {/* Section header */}
+          <motion.div {...fadeUp} className="mb-20">
+            <p className="text-primary uppercase tracking-[0.4em] text-xs mb-4">
+              {t.home.whyTag}
+            </p>
+            <h2 className="font-serif text-6xl md:text-8xl font-light text-white leading-none">
+              {t.home.whyTitle}
+            </h2>
+            <div className="w-20 h-px bg-primary mt-8" />
+          </motion.div>
+
+          {/* Two-column layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            {/* LEFT — feature timeline */}
+            <motion.div {...fadeUp} className="space-y-0">
+              {t.home.whyFeatures.map((feature, i) => (
+                <motion.div
+                  key={i}
+                  variants={stagger}
+                  initial="initial"
+                  whileInView="whileInView"
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: i * 0.1 }}
+                  className="group flex gap-5 py-6 border-b border-white/6 hover:border-primary/20 transition-colors duration-300"
+                >
+                  {/* Timeline connector */}
+                  <div className="flex flex-col items-center gap-2 shrink-0">
+                    <div className="w-10 h-10 border border-primary/30 group-hover:border-primary/60 flex items-center justify-center text-primary transition-colors duration-300">
+                      {featureIcons[i]}
+                    </div>
+                    {i < t.home.whyFeatures.length - 1 && (
+                      <div className="w-px flex-1 bg-white/5 group-hover:bg-primary/15 transition-colors min-h-[2rem]" />
+                    )}
+                  </div>
+                  {/* Content */}
+                  <div className="pb-4">
+                    <h3 className="font-serif text-xl text-white mb-2 group-hover:text-primary/90 transition-colors duration-300">
+                      {feature.title}
+                    </h3>
+                    <p className="text-white/55 text-sm font-light leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
             </motion.div>
+
+            {/* RIGHT — emotional value prop */}
             <motion.div
               {...fadeUp}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative"
+              transition={{ duration: 0.8, delay: 0.15 }}
+              className="lg:sticky lg:top-28 space-y-8"
             >
-              <div className="aspect-[4/5] relative overflow-hidden">
-                <img
-                  src={embalseImg}
-                  alt="ORSA Guatapé en el embalse"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
+              {/* Value proposition */}
+              <div className="p-8 border border-white/8 bg-card/40 backdrop-blur-sm">
+                <p className="text-white/80 text-lg md:text-xl font-light leading-relaxed">
+                  {t.home.whyValueProp}
+                </p>
               </div>
-              <div className="absolute -bottom-6 -left-6 glassmorphism p-6 max-w-xs">
-                <p className="font-serif text-3xl text-primary font-light">{t.home.aboutQuote}</p>
+
+              {/* Experience mini-list */}
+              <div>
+                <p className="text-primary/70 text-xs uppercase tracking-[0.4em] mb-5">
+                  {t.home.whyExpLabel}
+                </p>
+                <div className="space-y-3">
+                  {t.home.whyExps.map((exp, i) => (
+                    <Link
+                      key={i}
+                      href={`/experiencia/${experienceIds[i]}`}
+                      className="group flex items-center gap-4 p-4 border border-white/8 hover:border-primary/30 bg-background/30 hover:bg-primary/5 transition-all duration-300"
+                    >
+                      <div className="shrink-0">{expIcons[i]}</div>
+                      <div>
+                        <span className="font-serif text-white text-base group-hover:text-primary transition-colors">
+                          ORSA {exp.name}
+                        </span>
+                        <p className="text-white/45 text-xs font-light mt-0.5">{exp.desc}</p>
+                      </div>
+                      <ArrowRight className="w-4 h-4 text-white/20 group-hover:text-primary ml-auto transition-all group-hover:translate-x-1" />
+                    </Link>
+                  ))}
+                </div>
               </div>
+
+              {/* Tagline */}
+              <p className="font-serif text-xl text-primary/80 italic leading-relaxed">
+                {t.home.whyTagline}
+              </p>
+
+              {/* CTA button */}
+              <a
+                href="#experiencias"
+                className="inline-flex items-center gap-3 px-10 py-4 bg-primary text-background hover:bg-primary/90 transition-all duration-300 uppercase tracking-widest text-sm font-bold group"
+              >
+                {t.home.whyCta}
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </a>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* VALUES */}
-      <section className="py-24 px-4 bg-card/50 border-y border-white/5" data-testid="section-values">
-        <div className="max-w-6xl mx-auto">
-          <motion.div {...fadeUp} className="text-center mb-16">
-            <p className="text-primary uppercase tracking-[0.4em] text-xs mb-4">{t.home.valuesTag}</p>
-            <h2 className="font-serif text-5xl md:text-6xl font-light text-white">{t.home.valuesTitle}</h2>
-          </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {t.home.values.map((value, i) => (
-              <motion.div
-                key={value.title}
-                variants={stagger}
-                initial="initial"
-                whileInView="whileInView"
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: i * 0.15 }}
-                className="group p-10 border border-white/8 hover:border-primary/40 transition-all duration-500 bg-background/40 backdrop-blur-sm hover:bg-background/60"
-                data-testid={`card-value-${i}`}
-              >
-                <div className="text-primary mb-6 group-hover:scale-110 transition-transform duration-300">
-                  {valueIcons[i]}
-                </div>
-                <div className="w-8 h-px bg-primary mb-4" />
-                <h3 className="font-serif text-2xl text-white mb-4 tracking-wide">{value.title}</h3>
-                <p className="text-white/60 leading-relaxed text-sm font-light">{value.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* EXPERIENCES */}
-      <section id="experiencias" className="py-32 px-4" data-testid="section-experiences">
+      {/* ── EXPERIENCES ── */}
+      <section
+        id="experiencias"
+        className="py-32 px-4 bg-card/20 border-y border-white/5"
+        data-testid="section-experiences"
+      >
         <div className="max-w-6xl mx-auto">
           <motion.div {...fadeUp} className="text-center mb-20">
             <p className="text-primary uppercase tracking-[0.4em] text-xs mb-4">{t.home.expTag}</p>
@@ -237,7 +289,9 @@ export default function Home() {
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <p className="text-primary/80 text-xs uppercase tracking-widest mb-2">{exp.subtitle}</p>
-                  <h3 className="font-serif text-2xl text-white mb-3">ORSA {experienceIds[i].charAt(0).toUpperCase() + experienceIds[i].slice(1)}</h3>
+                  <h3 className="font-serif text-2xl text-white mb-3">
+                    ORSA {experienceIds[i].charAt(0).toUpperCase() + experienceIds[i].slice(1)}
+                  </h3>
                   <p className="text-white/60 text-sm mb-6 leading-relaxed font-light">{exp.description}</p>
                   <Link
                     href={`/experiencia/${experienceIds[i]}`}
@@ -254,7 +308,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* VIDEO SECTION */}
+      {/* ── VIDEO ── */}
       <section className="relative py-0 overflow-hidden" data-testid="section-video">
         <div className="relative h-[60vh] min-h-[400px]">
           <video autoPlay loop muted playsInline className="w-full h-full object-cover">
@@ -276,7 +330,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
+      {/* ── TESTIMONIALS ── */}
       <section className="py-32 px-4" data-testid="section-testimonials">
         <div className="max-w-6xl mx-auto">
           <motion.div {...fadeUp} className="text-center mb-20">
@@ -307,7 +361,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ALLIES */}
+      {/* ── ALLIES ── */}
       <section className="py-16 px-4 bg-card/30 border-y border-white/5" data-testid="section-allies">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-white/30 uppercase tracking-[0.4em] text-xs mb-8">{t.home.alliesTag}</p>
@@ -322,7 +376,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FINAL CTA */}
+      {/* ── FINAL CTA ── */}
       <section className="relative py-40 px-4 overflow-hidden" data-testid="section-cta">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-card/60 to-background" />
         <div className="relative z-10 max-w-3xl mx-auto text-center">
