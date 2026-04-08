@@ -1,9 +1,11 @@
-import React from 'react';
 import { Link } from 'wouter';
 import { Instagram, Facebook } from 'lucide-react';
 import logoImg from '@assets/logo_1775523360540.jpeg';
+import { useT } from '@/i18n/useT';
 
 export function Footer() {
+  const t = useT();
+
   return (
     <footer className="bg-[#050D20] text-white/80 py-16 border-t border-white/5">
       <div className="container mx-auto px-4">
@@ -17,7 +19,7 @@ export function Footer() {
               </div>
             </Link>
             <p className="text-sm font-light max-w-sm leading-relaxed text-white/70 mb-6">
-              Experiencias náuticas exclusivas en el embalse de Guatapé. Disfruta tu vida en el agua con la máxima seguridad, exclusividad y servicio premium.
+              {t.footer.description}
             </p>
             <div className="flex gap-4">
               <a href="#" className="p-2 border border-white/10 rounded-full hover:border-primary hover:text-primary transition-colors">
@@ -30,40 +32,34 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-serif text-xl text-white mb-6 tracking-wide">Experiencias</h4>
+            <h4 className="font-serif text-xl text-white mb-6 tracking-wide">{t.footer.experiences}</h4>
             <ul className="space-y-4">
-              <li>
-                <Link href="/experiencia/horizon" className="text-sm hover:text-primary transition-colors">ORSA Horizon</Link>
-              </li>
-              <li>
-                <Link href="/experiencia/adrenaline" className="text-sm hover:text-primary transition-colors">ORSA Adrenaline</Link>
-              </li>
-              <li>
-                <Link href="/experiencia/signature" className="text-sm hover:text-primary transition-colors">ORSA Signature</Link>
-              </li>
+              <li><Link href="/experiencia/horizon" className="text-sm hover:text-primary transition-colors">ORSA Horizon</Link></li>
+              <li><Link href="/experiencia/adrenaline" className="text-sm hover:text-primary transition-colors">ORSA Adrenaline</Link></li>
+              <li><Link href="/experiencia/signature" className="text-sm hover:text-primary transition-colors">ORSA Signature</Link></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-serif text-xl text-white mb-6 tracking-wide">Contacto</h4>
+            <h4 className="font-serif text-xl text-white mb-6 tracking-wide">{t.footer.contact}</h4>
             <ul className="space-y-4 text-sm">
               <li className="flex flex-col">
-                <span className="text-white/50 text-xs mb-1 uppercase tracking-wider">WhatsApp</span>
+                <span className="text-white/50 text-xs mb-1 uppercase tracking-wider">{t.footer.whatsapp}</span>
                 <a href="https://wa.me/573003545745" className="hover:text-primary transition-colors font-medium text-white">(300) 354 5745</a>
               </li>
               <li className="flex flex-col">
-                <span className="text-white/50 text-xs mb-1 uppercase tracking-wider">Ubicación</span>
-                <span>Embalse de Guatapé,<br/>Antioquia, Colombia</span>
+                <span className="text-white/50 text-xs mb-1 uppercase tracking-wider">{t.footer.location}</span>
+                <span className="whitespace-pre-line">{t.footer.locationValue}</span>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between text-xs text-white/40">
-          <p>© {new Date().getFullYear()} ORSA Guatapé. Todos los derechos reservados.</p>
+          <p>{t.footer.rights}</p>
           <div className="flex gap-4 mt-4 md:mt-0">
-            <a href="#" className="hover:text-white transition-colors">Políticas de Privacidad</a>
-            <a href="#" className="hover:text-white transition-colors">Términos y Condiciones</a>
+            <a href="#" className="hover:text-white transition-colors">{t.footer.privacy}</a>
+            <a href="#" className="hover:text-white transition-colors">{t.footer.terms}</a>
           </div>
         </div>
       </div>

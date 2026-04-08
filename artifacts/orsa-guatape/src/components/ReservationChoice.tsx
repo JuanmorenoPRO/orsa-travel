@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { X, ClipboardList, MessageCircle } from "lucide-react";
+import { useT } from "@/i18n/useT";
 
 interface ReservationChoiceProps {
   experience?: string;
@@ -8,10 +9,10 @@ interface ReservationChoiceProps {
 }
 
 export default function ReservationChoice({ experience, onClose, onSelectForm }: ReservationChoiceProps) {
-  const expName = experience || "una experiencia ORSA";
+  const t = useT();
 
   const handleWhatsApp = () => {
-    const msg = `Hola ORSA 👋\nQuiero información sobre ${expName}.\nMe gustaría hablar con un asesor.`;
+    const msg = t.form.waMessage(experience || "una experiencia ORSA");
     window.open(`https://wa.me/573003545745?text=${encodeURIComponent(msg)}`, "_blank");
     onClose();
   };
@@ -35,9 +36,9 @@ export default function ReservationChoice({ experience, onClose, onSelectForm }:
         </button>
 
         <div className="mb-8">
-          <p className="text-primary text-xs uppercase tracking-[0.4em] mb-2">Reservar</p>
-          <h2 className="font-serif text-2xl text-white leading-snug">
-            ¿Cómo prefieres<br />continuar?
+          <p className="text-primary text-xs uppercase tracking-[0.4em] mb-2">{t.form.reserveLabel}</p>
+          <h2 className="font-serif text-2xl text-white leading-snug whitespace-pre-line">
+            {t.form.howToContinue}
           </h2>
           <div className="w-10 h-px bg-primary mt-4" />
         </div>
@@ -54,14 +55,10 @@ export default function ReservationChoice({ experience, onClose, onSelectForm }:
               <ClipboardList className="w-5 h-5 text-white/60 group-hover:text-white/80 transition-colors" />
             </div>
             <div>
-              <p className="text-white font-medium text-sm tracking-wide mb-1">
-                Completar pre-reserva
-              </p>
-              <p className="text-white/45 text-xs font-light leading-relaxed">
-                Llena un formulario rápido y uno de nuestros asesores finalizará tu reserva contigo.
-              </p>
+              <p className="text-white font-medium text-sm tracking-wide mb-1">{t.form.preReserve}</p>
+              <p className="text-white/45 text-xs font-light leading-relaxed">{t.form.preReserveDesc}</p>
               <span className="inline-block mt-3 text-white/50 text-xs uppercase tracking-widest group-hover:text-white/70 transition-colors">
-                Llenar formulario →
+                {t.form.fillForm}
               </span>
             </div>
           </motion.button>
@@ -79,18 +76,14 @@ export default function ReservationChoice({ experience, onClose, onSelectForm }:
             </div>
             <div className="relative">
               <div className="flex items-center gap-2 mb-1">
-                <p className="text-white font-medium text-sm tracking-wide">
-                  Hablar con un asesor
-                </p>
+                <p className="text-white font-medium text-sm tracking-wide">{t.form.talkAdvisor}</p>
                 <span className="text-[10px] uppercase tracking-widest text-primary/80 border border-primary/30 px-1.5 py-0.5 leading-none">
-                  Rápido
+                  {t.form.fast}
                 </span>
               </div>
-              <p className="text-white/50 text-xs font-light leading-relaxed">
-                Contáctanos directamente por WhatsApp para atención inmediata y personalizada.
-              </p>
+              <p className="text-white/50 text-xs font-light leading-relaxed">{t.form.talkAdvisorDesc}</p>
               <span className="inline-block mt-3 text-primary/70 text-xs uppercase tracking-widest group-hover:text-primary transition-colors">
-                Ir a WhatsApp →
+                {t.form.goWhatsApp}
               </span>
             </div>
           </motion.button>

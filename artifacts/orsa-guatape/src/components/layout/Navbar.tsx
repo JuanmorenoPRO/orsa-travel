@@ -3,6 +3,8 @@ import { Link, useLocation } from 'wouter';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import logoImg from '@assets/logo_1775523360540.jpeg';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { useT } from '@/i18n/useT';
 import ReservationChoice from '@/components/ReservationChoice';
 import ReservationForm from '@/components/ReservationForm';
 
@@ -12,20 +14,20 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [showChoice, setShowChoice] = useState(false);
   const [showForm, setShowForm] = useState(false);
+  const { lang, setLang } = useLanguage();
+  const t = useT();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navLinks = [
-    { name: 'Inicio', path: '/' },
-    { name: 'Horizon', path: '/experiencia/horizon' },
-    { name: 'Adrenaline', path: '/experiencia/adrenaline' },
-    { name: 'Signature', path: '/experiencia/signature' },
+    { name: t.nav.home, path: '/' },
+    { name: t.nav.horizon, path: '/experiencia/horizon' },
+    { name: t.nav.adrenaline, path: '/experiencia/adrenaline' },
+    { name: t.nav.signature, path: '/experiencia/signature' },
   ];
 
   const handleReservar = () => {
@@ -77,11 +79,32 @@ export function Navbar() {
                 {link.name}
               </Link>
             ))}
+
+            {/* Language toggle */}
+            <div className="flex items-center gap-1 border border-white/15 px-1 py-1">
+              <button
+                onClick={() => setLang('es')}
+                className={`px-2 py-0.5 text-xs font-semibold uppercase tracking-wider transition-all duration-200 ${
+                  lang === 'es' ? 'bg-primary text-background' : 'text-white/40 hover:text-white/70'
+                }`}
+              >
+                ES
+              </button>
+              <button
+                onClick={() => setLang('en')}
+                className={`px-2 py-0.5 text-xs font-semibold uppercase tracking-wider transition-all duration-200 ${
+                  lang === 'en' ? 'bg-primary text-background' : 'text-white/40 hover:text-white/70'
+                }`}
+              >
+                EN
+              </button>
+            </div>
+
             <button
               onClick={handleReservar}
               className="px-6 py-2 border border-primary text-primary hover:bg-primary hover:text-background transition-colors uppercase text-sm font-semibold tracking-wider"
             >
-              Reservar
+              {t.nav.reserve}
             </button>
           </nav>
 
@@ -112,11 +135,32 @@ export function Navbar() {
                   {link.name}
                 </Link>
               ))}
+
+              {/* Mobile language toggle */}
+              <div className="flex items-center gap-2 border border-white/15 px-2 py-1">
+                <button
+                  onClick={() => setLang('es')}
+                  className={`px-3 py-1 text-sm font-semibold uppercase tracking-wider transition-all duration-200 ${
+                    lang === 'es' ? 'bg-primary text-background' : 'text-white/40'
+                  }`}
+                >
+                  ES
+                </button>
+                <button
+                  onClick={() => setLang('en')}
+                  className={`px-3 py-1 text-sm font-semibold uppercase tracking-wider transition-all duration-200 ${
+                    lang === 'en' ? 'bg-primary text-background' : 'text-white/40'
+                  }`}
+                >
+                  EN
+                </button>
+              </div>
+
               <button
                 onClick={handleReservar}
-                className="mt-8 px-8 py-3 border border-primary text-primary hover:bg-primary hover:text-background transition-colors uppercase text-sm font-semibold tracking-wider"
+                className="mt-4 px-8 py-3 border border-primary text-primary hover:bg-primary hover:text-background transition-colors uppercase text-sm font-semibold tracking-wider"
               >
-                Reservar Ahora
+                {t.nav.reserveNow}
               </button>
             </motion.div>
           )}

@@ -4,23 +4,13 @@ import { X, MessageCircle } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { useT } from "@/i18n/useT";
 
 const EXPERIENCES = [
   "ORSA Horizon",
   "ORSA Adrenaline",
   "ORSA Signature",
 ];
-
-const schema = z.object({
-  name: z.string().min(2, "Ingresa tu nombre"),
-  phone: z.string().min(7, "Ingresa un teléfono válido"),
-  people: z.string().min(1, "Cuántas personas?"),
-  date: z.string().min(1, "Selecciona una fecha"),
-  experience: z.string().min(1, "Selecciona una experiencia"),
-  notes: z.string().optional(),
-});
-
-type FormValues = z.infer<typeof schema>;
 
 interface ReservationFormProps {
   experience?: string;
@@ -29,6 +19,19 @@ interface ReservationFormProps {
 }
 
 export default function ReservationForm({ experience = "", selectExperience = false, onClose }: ReservationFormProps) {
+  const t = useT();
+
+  const schema = z.object({
+    name: z.string().min(2, t.form.errors.name),
+    phone: z.string().min(7, t.form.errors.phone),
+    people: z.string().min(1, t.form.errors.people),
+    date: z.string().min(1, t.form.errors.date),
+    experience: z.string().min(1, t.form.errors.experience),
+    notes: z.string().optional(),
+  });
+
+  type FormValues = z.infer<typeof schema>;
+
   const {
     register,
     handleSubmit,
@@ -46,8 +49,8 @@ export default function ReservationForm({ experience = "", selectExperience = fa
   }, []);
 
   const onSubmit = (data: FormValues) => {
-    const notes = data.notes ? `\nNotas: ${data.notes}` : "";
-    const msg = `Hola ORSA 👋\nQuiero vivir la experiencia ${data.experience}\nNombre: ${data.name}\nPersonas: ${data.people}\nFecha: ${data.date}${notes}\nQuiero más información 🙌`;
+    const notes = data.notes ? `\n${t.form.notes}: ${data.notes}` : "";
+    const msg = `Hola ORSA 👋\nQuiero vivir la experiencia ${data.experience}\n${t.form.name}: ${data.name}\n${t.form.people}: ${data.people}\n${t.form.date}: ${data.date}${notes}\nQuiero más información 🙌`;
     const encoded = encodeURIComponent(msg);
     window.open(`https://wa.me/573003545745?text=${encoded}`, "_blank");
     onClose();
@@ -76,68 +79,54 @@ export default function ReservationForm({ experience = "", selectExperience = fa
         </button>
 
         <div className="mb-8">
-          <p className="text-primary text-xs uppercase tracking-[0.4em] mb-2">Reservar</p>
-          <h2 className="font-serif text-3xl text-white">{experience}</h2>
+          <p className="text-primary text-xs uppercase tracking-[0.4em] mb-2">{t.form.reserveLabel}</p>
+          <h2 className="font-serif text-3xl text-white">{experience || t.form.experiencePlaceholder}</h2>
           <div className="w-10 h-px bg-primary mt-4" />
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" data-testid="form-reservation">
           <div>
-            <label className="text-white/50 text-xs uppercase tracking-wider block mb-2">
-              Nombre completo
-            </label>
+            <label className="text-white/50 text-xs uppercase tracking-wider block mb-2">{t.form.name}</label>
             <input
               {...register("name")}
               className="w-full bg-background border border-white/10 focus:border-primary text-white px-4 py-3 text-sm outline-none transition-colors placeholder:text-white/20"
-              placeholder="Tu nombre"
+              placeholder={t.form.namePlaceholder}
               data-testid="input-name"
             />
-            {errors.name && (
-              <p className="text-destructive text-xs mt-1">{errors.name.message}</p>
-            )}
+            {errors.name && <p className="text-destructive text-xs mt-1">{errors.name.message}</p>}
           </div>
 
           <div>
-            <label className="text-white/50 text-xs uppercase tracking-wider block mb-2">
-              Teléfono / WhatsApp
-            </label>
+            <label className="text-white/50 text-xs uppercase tracking-wider block mb-2">{t.form.phone}</label>
             <input
               {...register("phone")}
               className="w-full bg-background border border-white/10 focus:border-primary text-white px-4 py-3 text-sm outline-none transition-colors placeholder:text-white/20"
-              placeholder="+57 300 000 0000"
+              placeholder={t.form.phonePlaceholder}
               data-testid="input-phone"
             />
-            {errors.phone && (
-              <p className="text-destructive text-xs mt-1">{errors.phone.message}</p>
-            )}
+            {errors.phone && <p className="text-destructive text-xs mt-1">{errors.phone.message}</p>}
           </div>
 
           <div>
-            <label className="text-white/50 text-xs uppercase tracking-wider block mb-2">
-              Número de personas
-            </label>
+            <label className="text-white/50 text-xs uppercase tracking-wider block mb-2">{t.form.people}</label>
             <select
               {...register("people")}
               className="w-full bg-background border border-white/10 focus:border-primary text-white px-4 py-3 text-sm outline-none transition-colors"
               data-testid="select-people"
             >
-              <option value="">Selecciona...</option>
+              <option value="">{t.form.peoplePlaceholder}</option>
               {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
                 <option key={n} value={n}>
-                  {n} {n === 1 ? "persona" : "personas"}
+                  {n} {n === 1 ? t.form.person : t.form.persons}
                 </option>
               ))}
-              <option value="9+">9 o más</option>
+              <option value="9+">9+</option>
             </select>
-            {errors.people && (
-              <p className="text-destructive text-xs mt-1">{errors.people.message}</p>
-            )}
+            {errors.people && <p className="text-destructive text-xs mt-1">{errors.people.message}</p>}
           </div>
 
           <div>
-            <label className="text-white/50 text-xs uppercase tracking-wider block mb-2">
-              Fecha deseada
-            </label>
+            <label className="text-white/50 text-xs uppercase tracking-wider block mb-2">{t.form.date}</label>
             <input
               {...register("date")}
               type="date"
@@ -145,15 +134,11 @@ export default function ReservationForm({ experience = "", selectExperience = fa
               className="w-full bg-background border border-white/10 focus:border-primary text-white px-4 py-3 text-sm outline-none transition-colors"
               data-testid="input-date"
             />
-            {errors.date && (
-              <p className="text-destructive text-xs mt-1">{errors.date.message}</p>
-            )}
+            {errors.date && <p className="text-destructive text-xs mt-1">{errors.date.message}</p>}
           </div>
 
           <div>
-            <label className="text-white/50 text-xs uppercase tracking-wider block mb-2">
-              Experiencia
-            </label>
+            <label className="text-white/50 text-xs uppercase tracking-wider block mb-2">{t.form.experience}</label>
             {selectExperience ? (
               <>
                 <select
@@ -161,14 +146,12 @@ export default function ReservationForm({ experience = "", selectExperience = fa
                   className="w-full bg-background border border-white/10 focus:border-primary text-white px-4 py-3 text-sm outline-none transition-colors"
                   data-testid="select-experience"
                 >
-                  <option value="">Selecciona una experiencia...</option>
+                  <option value="">{t.form.experiencePlaceholder}</option>
                   {EXPERIENCES.map((exp) => (
                     <option key={exp} value={exp}>{exp}</option>
                   ))}
                 </select>
-                {errors.experience && (
-                  <p className="text-destructive text-xs mt-1">{errors.experience.message}</p>
-                )}
+                {errors.experience && <p className="text-destructive text-xs mt-1">{errors.experience.message}</p>}
               </>
             ) : (
               <input
@@ -182,14 +165,14 @@ export default function ReservationForm({ experience = "", selectExperience = fa
 
           <div>
             <label className="text-white/50 text-xs uppercase tracking-wider block mb-2">
-              Notas adicionales{" "}
-              <span className="text-white/30 normal-case">(opcional)</span>
+              {t.form.notes}{" "}
+              <span className="text-white/30 normal-case">{t.form.notesOptional}</span>
             </label>
             <textarea
               {...register("notes")}
               rows={3}
               className="w-full bg-background border border-white/10 focus:border-primary text-white px-4 py-3 text-sm outline-none transition-colors placeholder:text-white/20 resize-none"
-              placeholder="Cuéntanos algo especial sobre tu experiencia..."
+              placeholder={t.form.notesPlaceholder}
               data-testid="textarea-notes"
             />
           </div>
@@ -199,8 +182,8 @@ export default function ReservationForm({ experience = "", selectExperience = fa
               <MessageCircle className="w-4 h-4 text-primary" />
             </div>
             <p className="text-white/75 text-sm font-light leading-relaxed">
-              En <span className="text-primary font-medium">ORSA</span> queremos que vivas la mejor experiencia, por eso finalizaremos la reserva con un{" "}
-              <span className="text-white/90">asesor personalizado.</span>
+              {t.form.trustMsg} <span className="text-primary font-medium">{t.form.trustBrand}</span> {t.form.trustMid}{" "}
+              <span className="text-white/90">{t.form.trustEnd}</span>
             </p>
           </div>
 
@@ -209,12 +192,10 @@ export default function ReservationForm({ experience = "", selectExperience = fa
             className="w-full py-4 bg-primary text-background font-bold uppercase tracking-widest text-sm hover:bg-primary/90 transition-all duration-300"
             data-testid="button-submit-reservation"
           >
-            Enviar por WhatsApp
+            {t.form.submit}
           </button>
 
-          <p className="text-white/30 text-xs text-center font-light">
-            Al continuar, serás redirigido a WhatsApp con tu información precargada.
-          </p>
+          <p className="text-white/30 text-xs text-center font-light">{t.form.redirect}</p>
         </form>
       </motion.div>
     </div>
