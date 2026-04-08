@@ -1,0 +1,45 @@
+In the section “experiencias reales” Build a modern, responsive testimonial section for a luxury nautical experiences website called ORSA, focused on exclusivity, emotions, and premium service.
+The goal is to make users feel that this is not just a boat ride, but a memorable, high-end experience on the water in Guatapé.
+
+SECTION STRUCTURE:
+1. Top banner (highlight strip)
+* Full-width section with a premium warm gradient (dark blue to gold accent or soft sunset tones)
+* Centered bold headline: "Muchos llegan por el paisaje… pero se quedan por la experiencia."
+* Subtext below with a subtle icon: "Momentos únicos, conexiones reales y recuerdos que se quedan contigo."
+
+1. Reviews section title
+* Large, bold, centered heading: "EXPERIENCIAS DE NUESTROS CLIENTES"
+
+1. Testimonial section (main content)
+* Full-width background image or video of a real ORSA experience: (people on a yacht, wakeboard, sunset in Guatapé, celebration on boat)
+* Overlay a semi-transparent dark luxury card (glass effect)
+    * Positioned right on desktop
+    * Full width on mobile
+
+1. Testimonial card content:
+* Name + context (e.g. "Camila & amigos", "Pareja - Medellín", "Grupo internacional")
+* 1–2 paragraphs of testimonial text:
+    * Describe the experience (service, boat, activities)
+    * Highlight premium details (music, drinks, attention)
+    * Emotional result (exclusivity, connection, unforgettable moment)
+Example tone: "Desde que llegamos todo fue perfecto. La atención, la música, el ambiente… se siente como una experiencia privada de lujo. Definitivamente repetiríamos."
+* Optional elegant emojis (🌅 🚤 ✨) but minimal
+
+1. Design requirements:
+* Clean, modern, luxury UI
+* Rounded corners (2xl)
+* Soft shadows and glassmorphism effect
+* Elegant spacing and layout
+* Smooth transitions and hover effects
+* Mobile-first responsive design
+* Typography:
+    * Serif font for titles (luxury feel)
+    * Sans-serif (Inter or Poppins) for body
+
+1. Optional enhancements:
+* Add carousel functionality (horizontal scroll or slider-ready)
+* Subtle fade-in animation on load
+* Parallax effect on background image
+* Include small avatar or circular image for testimonial author
+
+GOAL: Create a visually stunning, emotionally engaging testimonial section that builds trust, reinforces exclusivity, and motivates users to book a premium experience with ORSA.

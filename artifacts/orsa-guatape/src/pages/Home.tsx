@@ -1,8 +1,8 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState, useCallback } from "react";
 import { Link } from "wouter";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
-  ChevronDown, Play, Quote, ArrowRight,
+  ChevronDown, Play, Quote, ArrowRight, ChevronLeft, ChevronRight, Star,
   ShieldCheck, Headphones, Anchor, Lock, Handshake, Camera,
   Waves, Zap, Crown,
 } from "lucide-react";
@@ -10,6 +10,7 @@ import heroVideo from "@assets/video1_1775523574157.mp4";
 import embalseImg from "@assets/experiencia_embalse_1775523360540.jpeg";
 import wakeboardImg from "@assets/experiecia_wakeboard_1775523360538.jpeg";
 import { useT } from "@/i18n/useT";
+import { TestimonialsSection } from "@/components/TestimonialsSection";
 
 const fadeUp = {
   initial: { opacity: 0, y: 40 },
@@ -331,35 +332,7 @@ export default function Home() {
       </section>
 
       {/* ── TESTIMONIALS ── */}
-      <section className="py-32 px-4" data-testid="section-testimonials">
-        <div className="max-w-6xl mx-auto">
-          <motion.div {...fadeUp} className="text-center mb-20">
-            <p className="text-primary uppercase tracking-[0.4em] text-xs mb-4">{t.home.testimTag}</p>
-            <h2 className="font-serif text-5xl md:text-6xl font-light text-white">{t.home.testimTitle}</h2>
-          </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {t.home.testimonials.map((item, i) => (
-              <motion.div
-                key={i}
-                variants={stagger}
-                initial="initial"
-                whileInView="whileInView"
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: i * 0.15 }}
-                className="p-8 border border-white/8 bg-card/40 backdrop-blur-sm hover:border-primary/30 transition-all duration-500"
-                data-testid={`card-testimonial-${i}`}
-              >
-                <Quote className="w-8 h-8 text-primary/40 mb-6" />
-                <p className="text-white/80 leading-relaxed mb-8 font-light italic">"{item.quote}"</p>
-                <div className="border-t border-white/10 pt-6">
-                  <p className="text-white font-medium text-sm">{item.author}</p>
-                  <p className="text-primary/70 text-xs mt-1 uppercase tracking-wider">{item.role}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <TestimonialsSection />
 
       {/* ── ALLIES ── */}
       <section className="py-16 px-4 bg-card/30 border-y border-white/5" data-testid="section-allies">
