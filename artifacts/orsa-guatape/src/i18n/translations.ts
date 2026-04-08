@@ -305,6 +305,12 @@ const es = {
     rights: `© ${new Date().getFullYear()} ORSA Guatapé. Todos los derechos reservados.`,
     privacy: 'Políticas de Privacidad',
     terms: 'Términos y Condiciones',
+    igHandle: '@orsa.guatape',
+    igBio: 'Experiencias náuticas exclusivas · Guatapé, Colombia',
+    igFollow: 'Seguir en Instagram',
+    ctaHeadline: '¿Listo para vivirlo?',
+    ctaSub: 'Contáctanos y diseñamos juntos el momento perfecto sobre el agua.',
+    ctaBtn: 'Reservar ahora',
   },
 };
 
@@ -613,6 +619,12 @@ const en = {
     rights: `© ${new Date().getFullYear()} ORSA Guatapé. All rights reserved.`,
     privacy: 'Privacy Policy',
     terms: 'Terms & Conditions',
+    igHandle: '@orsa.guatape',
+    igBio: 'Exclusive nautical experiences · Guatapé, Colombia',
+    igFollow: 'Follow on Instagram',
+    ctaHeadline: 'Ready to live it?',
+    ctaSub: 'Contact us and together we design the perfect moment on the water.',
+    ctaBtn: 'Book now',
   },
 };
 
