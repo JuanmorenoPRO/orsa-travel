@@ -325,7 +325,16 @@ export default function Home() {
                 <br />
                 <span className="italic text-gold-gradient">{t.home.videoTitle2}</span>
               </h2>
-              <p className="text-white/60 font-light">{t.home.videoSubtitle}</p>
+              <p className="text-white/60 font-light mb-10">{t.home.videoSubtitle}</p>
+              <a
+                href="https://wa.me/573003545745?text=Hola%20ORSA%20👋%0AQuiero%20más%20información%20sobre%20sus%20experiencias%20🙌"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 px-10 py-4 bg-primary text-background hover:bg-primary/90 transition-all duration-300 uppercase tracking-widest text-sm font-bold group"
+              >
+                {t.home.ctaBtn}
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </a>
             </motion.div>
           </div>
         </div>

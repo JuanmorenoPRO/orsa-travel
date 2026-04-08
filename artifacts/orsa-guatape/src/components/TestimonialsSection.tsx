@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight, Quote, Star, Anchor } from "lucide-react";
+import { ChevronLeft, ChevronRight, Quote, Star, Anchor, ArrowRight } from "lucide-react";
 import embalseImg from "@assets/experiencia_embalse_1775523360540.jpeg";
 import wakeboardImg from "@assets/experiecia_wakeboard_1775523360538.jpeg";
 import { useT } from "@/i18n/useT";
@@ -91,8 +91,32 @@ export function TestimonialsSection() {
           <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-background/30" />
         </div>
 
-        {/* LEFT spacer (visible on desktop, transparent) */}
-        <div className="hidden md:block flex-1 min-w-0 z-10" />
+        {/* LEFT — CTA overlay (desktop only) */}
+        <div className="hidden md:flex flex-1 min-w-0 z-10 items-end p-12 lg:p-16 pb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="max-w-xs"
+          >
+            <div className="w-10 h-px bg-primary mb-5" />
+            <p className="font-serif text-3xl text-white font-light leading-snug mb-6">
+              {t.home.ctaTitle1}
+              <br />
+              <span className="italic text-primary">{t.home.ctaTitle2}</span>
+            </p>
+            <a
+              href="https://wa.me/573003545745?text=Hola%20ORSA%20👋%0AQuiero%20más%20información%20sobre%20sus%20experiencias%20🙌"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-background hover:bg-primary/90 transition-all duration-300 uppercase tracking-widest text-xs font-bold group"
+            >
+              {t.home.ctaBtn}
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </a>
+          </motion.div>
+        </div>
 
         {/* RIGHT — glassmorphism card */}
         <div className="relative z-10 flex items-center justify-center md:justify-end w-full md:w-[52%] lg:w-[46%] p-6 md:p-12 lg:p-16">
