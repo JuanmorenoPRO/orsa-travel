@@ -39,7 +39,7 @@ export function Footer() {
               {igPhotos.map((img, i) => (
                 <a
                   key={i}
-                  href="https://instagram.com/orsa.guatape"
+                  href="https://www.instagram.com/orsa_travel/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group relative aspect-square overflow-hidden"
@@ -58,7 +58,7 @@ export function Footer() {
 
             {/* Follow button */}
             <a
-              href="https://instagram.com/orsa.guatape"
+              href="https://www.instagram.com/orsa_travel/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 w-full justify-center py-2.5 border border-white/15 hover:border-primary/50 text-white/70 hover:text-white text-xs uppercase tracking-widest transition-all duration-300"
