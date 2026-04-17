@@ -6,7 +6,8 @@ import {
   ShieldCheck, Headphones, Anchor, Lock, Handshake, Camera,
   Waves, Zap, Crown,
 } from "lucide-react";
-import heroVideo from "@assets/video1_1775523574157.mp4";
+import heroVideo1 from "@assets/WhatsApp_Video_2026-04-16_at_23.44.23_1776433775028.mp4";
+import heroVideo2 from "@assets/WhatsApp_Video_2026-04-16_at_23.45.23_1776433775028.mp4";
 import embalseImg from "@assets/experiencia_embalse_1775523360540.jpeg";
 import wakeboardImg from "@assets/experiecia_wakeboard_1775523360538.jpeg";
 import { useT } from "@/i18n/useT";
@@ -24,6 +25,8 @@ const stagger = {
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
 };
+
+const heroVideos = [heroVideo1, heroVideo2];
 
 const featureIcons = [
   <ShieldCheck className="w-5 h-5" />,
@@ -51,16 +54,13 @@ const tagColors = [
 export default function Home() {
   const t = useT();
   const heroRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoIdx, setVideoIdx] = useState(0);
   const { scrollY } = useScroll();
   const heroY = useTransform(scrollY, [0, 600], [0, 120]);
   const heroOpacity = useTransform(scrollY, [0, 400], [1, 0]);
 
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    video.muted = true;
-    video.play().catch(() => {});
+  const handleVideoEnd = useCallback(() => {
+    setVideoIdx((i) => (i + 1) % heroVideos.length);
   }, []);
 
   return (
@@ -73,15 +73,15 @@ export default function Home() {
       >
         <motion.div style={{ y: heroY }} className="absolute inset-0 z-0">
           <video
-            ref={videoRef}
+            key={videoIdx}
             autoPlay
-            loop
             muted
             playsInline
+            onEnded={handleVideoEnd}
             className="w-full h-full object-cover"
             data-testid="hero-video"
           >
-            <source src={heroVideo} type="video/mp4" />
+            <source src={heroVideos[videoIdx]} type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background/90" />
         </motion.div>
@@ -312,8 +312,15 @@ export default function Home() {
       {/* ── VIDEO ── */}
       <section className="relative py-0 overflow-hidden" data-testid="section-video">
         <div className="relative h-[60vh] min-h-[400px]">
-          <video autoPlay loop muted playsInline className="w-full h-full object-cover">
-            <source src={heroVideo} type="video/mp4" />
+          <video
+            key={`mid-${videoIdx}`}
+            autoPlay
+            muted
+            playsInline
+            onEnded={handleVideoEnd}
+            className="w-full h-full object-cover"
+          >
+            <source src={heroVideos[videoIdx]} type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-background/60 flex items-center justify-center">
             <motion.div {...fadeUp} className="text-center max-w-2xl px-4">
