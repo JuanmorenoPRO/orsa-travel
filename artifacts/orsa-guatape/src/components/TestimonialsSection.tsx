@@ -6,11 +6,12 @@ import clientPhoto2 from "@assets/WhatsApp_Image_2026-04-17_at_10.37.09_(1)_1776
 import clientPhoto3 from "@assets/WhatsApp_Image_2026-04-17_at_10.37.09_1776440459402.jpeg";
 import clientPhoto4 from "@assets/WhatsApp_Image_2026-04-17_at_16.31.35_1776461593283.jpeg";
 import clientPhoto5 from "@assets/WhatsApp_Image_2026-04-17_at_14.52.35_1776461611817.jpeg";
+import clientPhoto6 from "@assets/WhatsApp_Image_2026-04-17_at_08.07.52_1776461794151.jpeg";
 import { useT } from "@/i18n/useT";
 
 const photoStrip = [
-  clientPhoto1, clientPhoto2, clientPhoto3, clientPhoto4, clientPhoto5,
-  clientPhoto1, clientPhoto2, clientPhoto3, clientPhoto4, clientPhoto5,
+  clientPhoto1, clientPhoto2, clientPhoto3, clientPhoto4, clientPhoto5, clientPhoto6,
+  clientPhoto1, clientPhoto2, clientPhoto3, clientPhoto4, clientPhoto5, clientPhoto6,
 ];
 
 const fadeUp = {
@@ -169,7 +170,7 @@ export function TestimonialsSection() {
               <div key={i} className="relative w-full shrink-0 overflow-hidden" style={{ height: 280 }}>
                 <img
                   src={src}
-                  alt={`Experiencia ORSA ${(i % 5) + 1}`}
+                  alt={`Experiencia ORSA ${(i % 6) + 1}`}
                   className="w-full h-full object-cover object-center"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-background/30 to-transparent" />
