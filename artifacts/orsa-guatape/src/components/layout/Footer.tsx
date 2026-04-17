@@ -32,15 +32,20 @@ export function Footer() {
           {/* COL 1 — Instagram */}
           <div>
             {/* Profile header */}
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-primary/40 shrink-0">
+            <a
+              href="https://www.instagram.com/orsa_travel?igsh=NmVzMmNobnFvc21k"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 mb-5 group"
+            >
+              <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-primary/40 group-hover:border-primary transition-colors duration-300 shrink-0">
                 <img src={logoImg} alt="ORSA" className="w-full h-full object-cover" />
               </div>
               <div>
-                <p className="text-white font-semibold text-sm tracking-wide">{f.igHandle}</p>
+                <p className="text-white font-semibold text-sm tracking-wide group-hover:text-primary transition-colors duration-300">{f.igHandle}</p>
                 <p className="text-white/45 text-xs font-light mt-0.5 max-w-[180px] leading-snug">{f.igBio}</p>
               </div>
-            </div>
+            </a>
 
             {/* 3×2 photo grid */}
             <div className="grid grid-cols-3 gap-1 mb-4">
