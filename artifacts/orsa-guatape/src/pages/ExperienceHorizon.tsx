@@ -30,7 +30,7 @@ export default function ExperienceHorizon() {
     <div className="bg-background text-foreground pt-20">
       {/* HERO */}
       <section className="relative h-[80vh] min-h-[500px] overflow-hidden" data-testid="hero-horizon">
-        <img src={horizonImg} alt="ORSA Horizon - Embalse de Guatapé" className="w-full h-full object-cover object-center" />
+        <img src={horizonImg} alt="ORSA Horizon - Embalse de Guatapé" className="w-full h-full object-cover object-bottom" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-background/20" />
         <div className="absolute bottom-0 left-0 right-0 p-8 md:p-16 max-w-5xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9 }}>

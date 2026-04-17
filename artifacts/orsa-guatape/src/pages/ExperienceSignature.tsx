@@ -37,7 +37,7 @@ export default function ExperienceSignature() {
     <div className="bg-background text-foreground pt-20">
       {/* HERO */}
       <section className="relative h-[80vh] min-h-[500px] overflow-hidden" data-testid="hero-signature">
-        <img src={signatureImg} alt="ORSA Signature" className="w-full h-full object-cover object-top" />
+        <img src={signatureImg} alt="ORSA Signature" className="w-full h-full object-cover object-bottom" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/30" />
         <div className="absolute inset-0 flex items-center justify-center">
           <motion.div
