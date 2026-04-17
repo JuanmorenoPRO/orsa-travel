@@ -112,7 +112,7 @@ export default function About() {
               src={boatDockImg}
               alt="Lancha ORSA en el muelle de Guatapé"
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              style={{ objectPosition: "center 40%" }}
+              style={{ objectPosition: "center center" }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
             <div className="absolute bottom-8 left-8">
