@@ -55,6 +55,8 @@ const tagColors = [
 export default function Home() {
   const t = useT();
   const heroRef = useRef<HTMLDivElement>(null);
+  const heroVideoRef = useRef<HTMLVideoElement>(null);
+  const midVideoRef = useRef<HTMLVideoElement>(null);
   const [videoIdx, setVideoIdx] = useState(0);
   const { scrollY } = useScroll();
   const heroY = useTransform(scrollY, [0, 600], [0, 120]);
@@ -63,6 +65,15 @@ export default function Home() {
   const handleVideoEnd = useCallback(() => {
     setVideoIdx((i) => (i + 1) % heroVideos.length);
   }, []);
+
+  useEffect(() => {
+    [heroVideoRef, midVideoRef].forEach((ref) => {
+      const vid = ref.current;
+      if (!vid) return;
+      vid.load();
+      vid.play().catch(() => {});
+    });
+  }, [videoIdx]);
 
   return (
     <div className="bg-background text-foreground">
@@ -74,10 +85,12 @@ export default function Home() {
       >
         <motion.div style={{ y: heroY }} className="absolute inset-0 z-0">
           <video
+            ref={heroVideoRef}
             key={videoIdx}
             autoPlay
             muted
             playsInline
+            preload="auto"
             onEnded={handleVideoEnd}
             className="w-full h-full object-cover"
             data-testid="hero-video"
@@ -314,10 +327,12 @@ export default function Home() {
       <section className="relative py-0 overflow-hidden" data-testid="section-video">
         <div className="relative h-[60vh] min-h-[400px]">
           <video
+            ref={midVideoRef}
             key={`mid-${videoIdx}`}
             autoPlay
             muted
             playsInline
+            preload="auto"
             onEnded={handleVideoEnd}
             className="w-full h-full object-cover"
           >
