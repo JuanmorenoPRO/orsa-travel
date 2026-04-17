@@ -25,7 +25,7 @@ export default function ReservationChoice({ experience, onClose, onSelectForm }:
       <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
-        transition={{ duration: 0.35, ease: "easeOut" }}
+        transition={{ duration: 0.35, ease: "easeOut" as const }}
         className="bg-card border border-white/10 p-8 w-full max-w-md relative"
       >
         <button

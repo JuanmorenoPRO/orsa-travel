@@ -19,7 +19,7 @@ const fadeUp = {
   initial: { opacity: 0, y: 40 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
-  transition: { duration: 0.8, ease: "easeOut" },
+  transition: { duration: 0.8, ease: "easeOut" as const },
 };
 
 const stagger = {
@@ -154,7 +154,7 @@ export default function Home() {
         >
           <motion.div
             animate={{ y: [0, 8, 0] }}
-            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" as const }}
           >
             <ChevronDown className="w-6 h-6 text-white/40" />
           </motion.div>

@@ -11,7 +11,7 @@ const fadeUp = {
   initial: { opacity: 0, y: 40 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
-  transition: { duration: 0.8, ease: "easeOut" },
+  transition: { duration: 0.8, ease: "easeOut" as const },
 };
 
 const stagger = {
@@ -45,7 +45,7 @@ export default function About() {
           <motion.h1
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
+            transition={{ duration: 1, ease: "easeOut" as const }}
             className="font-serif text-5xl md:text-7xl lg:text-8xl font-light text-white text-center leading-tight px-4"
           >
             {a.heroHeading}{" "}
