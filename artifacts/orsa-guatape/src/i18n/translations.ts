@@ -88,6 +88,8 @@ const es = {
   },
   about: {
     heroTag: 'Nuestra historia',
+    heroHeading: 'Acerca de',
+    heroHeadingItalic: 'nosotros…',
     heroTitle1: 'Nace en la familia.',
     heroTitle2: 'Vive en el agua.',
     heroSubtitle: 'El origen y los valores de ORSA Guatapé',
@@ -402,6 +404,8 @@ const en = {
   },
   about: {
     heroTag: 'Our story',
+    heroHeading: 'About',
+    heroHeadingItalic: 'us…',
     heroTitle1: 'Born in the family.',
     heroTitle2: 'Lived on the water.',
     heroSubtitle: 'The origin and values of ORSA Guatapé',

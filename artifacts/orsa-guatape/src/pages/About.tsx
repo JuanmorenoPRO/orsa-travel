@@ -48,8 +48,8 @@ export default function About() {
             transition={{ duration: 1, ease: "easeOut" }}
             className="font-serif text-5xl md:text-7xl lg:text-8xl font-light text-white text-center leading-tight px-4"
           >
-            Acerca de{" "}
-            <span className="italic text-white/60">nosotros…</span>
+            {a.heroHeading}{" "}
+            <span className="italic text-white/60">{a.heroHeadingItalic}</span>
           </motion.h1>
         </div>
       </section>
