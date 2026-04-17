@@ -52,48 +52,6 @@ export default function ExperienceAdrenaline() {
         </div>
       </section>
 
-      {/* GALLERY STRIP */}
-      <section className="px-4 pb-16" data-testid="section-gallery">
-        <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-2 gap-3">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="relative aspect-[3/4] overflow-hidden group"
-            >
-              <img
-                src={wakeboardImg}
-                alt="Wakeboard en el embalse de Guatapé"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
-              <div className="absolute bottom-4 left-4">
-                <span className="text-xs uppercase tracking-widest text-primary font-medium">Wakeboard</span>
-              </div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="relative aspect-[3/4] overflow-hidden group"
-            >
-              <img
-                src={donaImg}
-                alt="Dona inflable en el embalse de Guatapé"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
-              <div className="absolute bottom-4 left-4">
-                <span className="text-xs uppercase tracking-widest text-primary font-medium">Dona Inflable</span>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
       {/* WAKEBOARD */}
       <section className="py-16 px-4 bg-card/40 border-y border-white/5" data-testid="section-wakeboard">
         <div className="max-w-5xl mx-auto">
