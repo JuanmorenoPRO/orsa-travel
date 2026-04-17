@@ -107,7 +107,7 @@ export function TestimonialsSection() {
               <span className="italic text-primary">{t.home.ctaTitle2}</span>
             </p>
             <a
-              href="https://wa.me/573003545745?text=Hola%20ORSA%20👋%0AQuiero%20más%20información%20sobre%20sus%20experiencias%20🙌"
+              href="https://wa.me/573114493886?text=Hola%20ORSA%20👋%0AQuiero%20más%20información%20sobre%20sus%20experiencias%20🙌"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-background hover:bg-primary/90 transition-all duration-300 uppercase tracking-widest text-xs font-bold group"

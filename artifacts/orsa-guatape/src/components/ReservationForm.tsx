@@ -52,7 +52,7 @@ export default function ReservationForm({ experience = "", selectExperience = fa
     const notes = data.notes ? `\n${t.form.notes}: ${data.notes}` : "";
     const msg = `Hola ORSA 👋\nQuiero vivir la experiencia ${data.experience}\n${t.form.name}: ${data.name}\n${t.form.people}: ${data.people}\n${t.form.date}: ${data.date}${notes}\nQuiero más información 🙌`;
     const encoded = encodeURIComponent(msg);
-    window.open(`https://wa.me/573003545745?text=${encoded}`, "_blank");
+    window.open(`https://wa.me/573114493886?text=${encoded}`, "_blank");
     onClose();
   };
 

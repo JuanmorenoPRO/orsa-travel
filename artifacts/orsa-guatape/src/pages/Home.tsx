@@ -335,7 +335,7 @@ export default function Home() {
               </h2>
               <p className="text-white/60 font-light mb-10">{t.home.videoSubtitle}</p>
               <a
-                href="https://wa.me/573003545745?text=Hola%20ORSA%20👋%0AQuiero%20más%20información%20sobre%20sus%20experiencias%20🙌"
+                href="https://wa.me/573114493886?text=Hola%20ORSA%20👋%0AQuiero%20más%20información%20sobre%20sus%20experiencias%20🙌"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 px-10 py-4 bg-primary text-background hover:bg-primary/90 transition-all duration-300 uppercase tracking-widest text-sm font-bold group"
@@ -379,7 +379,7 @@ export default function Home() {
             </h2>
             <p className="text-white/60 mb-12 text-lg font-light max-w-xl mx-auto">{t.home.ctaSubtitle}</p>
             <a
-              href="https://wa.me/573003545745?text=Hola%20ORSA%20👋%0AQuiero%20más%20información%20sobre%20sus%20experiencias%20🙌"
+              href="https://wa.me/573114493886?text=Hola%20ORSA%20👋%0AQuiero%20más%20información%20sobre%20sus%20experiencias%20🙌"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 px-12 py-5 bg-primary text-background hover:bg-primary/90 transition-all duration-300 uppercase tracking-widest text-sm font-bold"

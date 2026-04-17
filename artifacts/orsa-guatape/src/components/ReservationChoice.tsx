@@ -13,7 +13,7 @@ export default function ReservationChoice({ experience, onClose, onSelectForm }:
 
   const handleWhatsApp = () => {
     const msg = t.form.waMessage(experience || "una experiencia ORSA");
-    window.open(`https://wa.me/573003545745?text=${encodeURIComponent(msg)}`, "_blank");
+    window.open(`https://wa.me/573114493886?text=${encodeURIComponent(msg)}`, "_blank");
     onClose();
   };
 

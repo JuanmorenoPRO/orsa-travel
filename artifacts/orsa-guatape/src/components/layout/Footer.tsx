@@ -39,7 +39,7 @@ export function Footer() {
               {igPhotos.map((img, i) => (
                 <a
                   key={i}
-                  href="https://www.instagram.com/orsa_travel/"
+                  href="https://www.instagram.com/orsa_travel?igsh=NmVzMmNobnFvc21k"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group relative aspect-square overflow-hidden"
@@ -58,7 +58,7 @@ export function Footer() {
 
             {/* Follow button */}
             <a
-              href="https://www.instagram.com/orsa_travel/"
+              href="https://www.instagram.com/orsa_travel?igsh=NmVzMmNobnFvc21k"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 w-full justify-center py-2.5 border border-white/15 hover:border-primary/50 text-white/70 hover:text-white text-xs uppercase tracking-widest transition-all duration-300"
@@ -78,10 +78,10 @@ export function Footer() {
                   <div>
                     <p className="text-white/40 text-xs uppercase tracking-wider mb-1">{f.whatsapp}</p>
                     <a
-                      href="https://wa.me/573003545745"
+                      href="https://wa.me/573114493886"
                       className="text-white hover:text-primary transition-colors font-medium"
                     >
-                      +57 (300) 354 5745
+                      +57 311 449 3886
                     </a>
                   </div>
                 </li>
@@ -130,7 +130,7 @@ export function Footer() {
                 </p>
               </div>
               <a
-                href="https://wa.me/573003545745?text=Hola%20ORSA%20👋%0AQuiero%20más%20información%20sobre%20sus%20experiencias%20🙌"
+                href="https://wa.me/573114493886?text=Hola%20ORSA%20👋%0AQuiero%20más%20información%20sobre%20sus%20experiencias%20🙌"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-3 w-full py-4 bg-primary text-background hover:bg-primary/90 transition-all duration-300 uppercase tracking-widest text-sm font-bold group"
