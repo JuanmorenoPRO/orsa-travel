@@ -8,8 +8,9 @@ import {
 } from "lucide-react";
 import heroVideo1 from "@assets/WhatsApp_Video_2026-04-16_at_23.44.23_1776433775028.mp4";
 import heroVideo2 from "@assets/WhatsApp_Video_2026-04-16_at_23.45.23_1776433775028.mp4";
-import embalseImg from "@assets/experiencia_embalse_1775523360540.jpeg";
-import wakeboardImg from "@assets/experiecia_wakeboard_1775523360538.jpeg";
+import horizonImg from "@assets/horizon_1776437424436.jpeg";
+import adrenalineImg from "@assets/adrenaline_1776437387102.jpeg";
+import signatureImg from "@assets/signature_1776437372219.jpeg";
 import { useT } from "@/i18n/useT";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
 
@@ -44,7 +45,7 @@ const expIcons = [
 ];
 
 const experienceIds = ["horizon", "adrenaline", "signature"];
-const experienceImages = [embalseImg, wakeboardImg, embalseImg];
+const experienceImages = [horizonImg, adrenalineImg, signatureImg];
 const tagColors = [
   "from-blue-500/20 to-blue-600/20",
   "from-orange-500/20 to-red-500/20",
