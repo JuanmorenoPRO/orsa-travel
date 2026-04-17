@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Zap, Shield, Users, Clock, MapPin, ChevronRight, Star } from "lucide-react";
+import heroImg from "@assets/adrenaline_1776437387102.jpeg";
 import wakeboardImg from "@assets/wakeboard_1776435753649.jpeg";
 import donaImg from "@assets/dona_1776435744374.jpeg";
 import ReservationForm from "@/components/ReservationForm";
@@ -31,7 +32,7 @@ export default function ExperienceAdrenaline() {
     <div className="bg-background text-foreground pt-20">
       {/* HERO */}
       <section className="relative h-[80vh] min-h-[500px] overflow-hidden" data-testid="hero-adrenaline">
-        <img src={wakeboardImg} alt="ORSA Adrenaline - Wakeboard" className="w-full h-full object-cover object-bottom" />
+        <img src={heroImg} alt="ORSA Adrenaline - Wakeboard" className="w-full h-full object-cover object-center" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-background/20" />
         <div className="absolute bottom-0 left-0 right-0 p-8 md:p-16 max-w-5xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9 }}>

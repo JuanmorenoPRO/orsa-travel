@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Crown, Sparkles, Clock, Users, Star, Shield, ChevronRight, Anchor, Music, Utensils, Heart } from "lucide-react";
-import embalseImg from "@assets/experiencia_embalse_1775523360540.jpeg";
+import signatureImg from "@assets/signature_1776437372219.jpeg";
 import ReservationForm from "@/components/ReservationForm";
 import { useT } from "@/i18n/useT";
 
@@ -37,7 +37,7 @@ export default function ExperienceSignature() {
     <div className="bg-background text-foreground pt-20">
       {/* HERO */}
       <section className="relative h-[80vh] min-h-[500px] overflow-hidden" data-testid="hero-signature">
-        <img src={embalseImg} alt="ORSA Signature" className="w-full h-full object-cover" />
+        <img src={signatureImg} alt="ORSA Signature" className="w-full h-full object-cover object-top" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/30" />
         <div className="absolute inset-0 flex items-center justify-center">
           <motion.div
