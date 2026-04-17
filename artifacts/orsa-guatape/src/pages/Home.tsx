@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import heroVideo1 from "@assets/WhatsApp_Video_2026-04-16_at_23.44.23_1776433775028.mp4";
 import heroVideo2 from "@assets/WhatsApp_Video_2026-04-16_at_23.45.23_1776433775028.mp4";
+import midSectionVideo from "@assets/WhatsApp_Video_2026-04-17_at_15.13.50_1776456909834.mp4";
 import horizonImg from "@assets/horizon_1776437424436.jpeg";
 import adrenalineImg from "@assets/adrenaline_1776437387102.jpeg";
 import signatureImg from "@assets/signature_1776437372219.jpeg";
@@ -56,7 +57,6 @@ export default function Home() {
   const t = useT();
   const heroRef = useRef<HTMLDivElement>(null);
   const heroVideoRef = useRef<HTMLVideoElement>(null);
-  const midVideoRef = useRef<HTMLVideoElement>(null);
   const [videoIdx, setVideoIdx] = useState(0);
   const { scrollY } = useScroll();
   const heroY = useTransform(scrollY, [0, 600], [0, 120]);
@@ -67,7 +67,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    [heroVideoRef, midVideoRef].forEach((ref) => {
+    [heroVideoRef].forEach((ref) => {
       const vid = ref.current;
       if (!vid) return;
       vid.load();
@@ -327,16 +327,14 @@ export default function Home() {
       <section className="relative py-0 overflow-hidden" data-testid="section-video">
         <div className="relative h-[60vh] min-h-[400px]">
           <video
-            ref={midVideoRef}
-            key={`mid-${videoIdx}`}
             autoPlay
             muted
+            loop
             playsInline
             preload="auto"
-            onEnded={handleVideoEnd}
             className="w-full h-full object-cover"
           >
-            <source src={heroVideos[videoIdx]} type="video/mp4" />
+            <source src={midSectionVideo} type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-background/60 flex items-center justify-center">
             <motion.div {...fadeUp} className="text-center max-w-2xl px-4">
