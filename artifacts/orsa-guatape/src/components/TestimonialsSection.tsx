@@ -1,14 +1,10 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight, Quote, Star, Anchor, ArrowRight } from "lucide-react";
-import embalseImg from "@assets/experiencia_embalse_1775523360540.jpeg";
-import wakeboardImg from "@assets/experiecia_wakeboard_1775523360538.jpeg";
+import { ChevronLeft, ChevronRight, Quote, Star, Anchor } from "lucide-react";
 import clientPhoto1 from "@assets/WhatsApp_Image_2026-04-17_at_10.26.58_1776440436601.jpeg";
 import clientPhoto2 from "@assets/WhatsApp_Image_2026-04-17_at_10.37.09_(1)_1776440449441.jpeg";
 import clientPhoto3 from "@assets/WhatsApp_Image_2026-04-17_at_10.37.09_1776440459402.jpeg";
 import { useT } from "@/i18n/useT";
-
-const bgImages = [embalseImg, wakeboardImg, embalseImg];
 
 const photoStrip = [clientPhoto1, clientPhoto2, clientPhoto3, clientPhoto1, clientPhoto2, clientPhoto3];
 
@@ -80,77 +76,11 @@ export function TestimonialsSection() {
         </div>
       </motion.div>
 
-      {/* ── ROLLING PHOTO STRIP ── */}
-      <div className="relative bg-background pb-10 overflow-hidden">
-        <div
-          className="flex gap-3"
-          style={{
-            width: "max-content",
-            animation: "orsa-scroll 22s linear infinite",
-          }}
-        >
-          {photoStrip.map((src, i) => (
-            <div
-              key={i}
-              className="relative shrink-0 w-52 h-72 md:w-64 md:h-80 overflow-hidden rounded-lg"
-            >
-              <img
-                src={src}
-                alt={`Experiencia ORSA ${(i % 3) + 1}`}
-                className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent" />
-            </div>
-          ))}
-        </div>
-        {/* fade edges */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-background to-transparent z-10" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-background to-transparent z-10" />
-      </div>
+      {/* ── MAIN BLOCK: LEFT = reviews, RIGHT = rolling photos ── */}
+      <div className="bg-background flex flex-col md:flex-row min-h-[620px]">
 
-      {/* ── MAIN TESTIMONIAL BLOCK ── */}
-      <div className="relative min-h-[620px] md:min-h-[680px] flex flex-col md:flex-row items-stretch overflow-hidden">
-        {/* Background image */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src={bgImages[active]}
-            alt="ORSA experience"
-            className="w-full h-full object-cover transition-all duration-1000"
-            style={{ opacity: fading ? 0 : 1 }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-background/20" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-background/30" />
-        </div>
-
-        {/* LEFT — CTA overlay (desktop only) */}
-        <div className="hidden md:flex flex-1 min-w-0 z-10 items-end p-12 lg:p-16 pb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="max-w-xs"
-          >
-            <div className="w-10 h-px bg-primary mb-5" />
-            <p className="font-serif text-3xl text-white font-light leading-snug mb-6">
-              {t.home.ctaTitle1}
-              <br />
-              <span className="italic text-primary">{t.home.ctaTitle2}</span>
-            </p>
-            <a
-              href="https://wa.me/573114493886?text=Hola%20ORSA%20👋%0AQuiero%20más%20información%20sobre%20sus%20experiencias%20🙌"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-background hover:bg-primary/90 transition-all duration-300 uppercase tracking-widest text-xs font-bold group"
-            >
-              {t.home.ctaBtn}
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </a>
-          </motion.div>
-        </div>
-
-        {/* RIGHT — glassmorphism card */}
-        <div className="relative z-10 flex items-center justify-center md:justify-end w-full md:w-[52%] lg:w-[46%] p-6 md:p-12 lg:p-16">
+        {/* LEFT — quote card */}
+        <div className="flex items-center justify-center w-full md:w-1/2 p-6 md:p-12 lg:p-16">
           <div
             className="w-full max-w-lg rounded-2xl border border-white/10 shadow-2xl overflow-hidden"
             style={{
@@ -223,6 +153,29 @@ export function TestimonialsSection() {
             </div>
           </div>
         </div>
+
+        {/* RIGHT — rolling photo strip (vertical) */}
+        <div className="relative w-full md:w-1/2 overflow-hidden" style={{ minHeight: 520 }}>
+          <div
+            className="flex flex-col gap-3 absolute inset-x-0 top-0"
+            style={{ animation: "orsa-scroll-v 18s linear infinite" }}
+          >
+            {photoStrip.map((src, i) => (
+              <div key={i} className="relative w-full shrink-0 overflow-hidden" style={{ height: 280 }}>
+                <img
+                  src={src}
+                  alt={`Experiencia ORSA ${(i % 3) + 1}`}
+                  className="w-full h-full object-cover object-center"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-background/30 to-transparent" />
+              </div>
+            ))}
+          </div>
+          {/* fade top/bottom */}
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-background to-transparent z-10" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-background to-transparent z-10" />
+        </div>
+
       </div>
     </section>
   );
