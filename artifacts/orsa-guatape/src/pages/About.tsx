@@ -101,44 +101,24 @@ export default function About() {
       {/* PHOTO GALLERY */}
       <section className="pb-24 px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <motion.div
-              {...fadeUp}
-              transition={{ duration: 0.8 }}
-              className="relative overflow-hidden rounded-sm group"
-              style={{ height: 480 }}
-            >
-              <img
-                src={boatDockImg}
-                alt="Lancha ORSA en el muelle de Guatapé"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                style={{ objectPosition: "center 40%" }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
-              <div className="absolute bottom-6 left-6">
-                <p className="text-white/40 text-xs uppercase tracking-widest mb-1">Nuestra flota</p>
-                <p className="font-serif text-white text-xl font-light">ORSA en el muelle</p>
-              </div>
-            </motion.div>
-            <motion.div
-              {...fadeUp}
-              transition={{ duration: 0.8, delay: 0.15 }}
-              className="relative overflow-hidden rounded-sm group"
-              style={{ height: 480 }}
-            >
-              <img
-                src={boatActionImg}
-                alt="Lancha ORSA navegando en el embalse con El Peñol de fondo"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                style={{ objectPosition: "center 50%" }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
-              <div className="absolute bottom-6 left-6">
-                <p className="text-white/40 text-xs uppercase tracking-widest mb-1">En acción</p>
-                <p className="font-serif text-white text-xl font-light">El Peñol como escenario</p>
-              </div>
-            </motion.div>
-          </div>
+          <motion.div
+            {...fadeUp}
+            transition={{ duration: 0.8 }}
+            className="relative overflow-hidden rounded-sm group"
+            style={{ height: 520 }}
+          >
+            <img
+              src={boatDockImg}
+              alt="Lancha ORSA en el muelle de Guatapé"
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              style={{ objectPosition: "center 40%" }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
+            <div className="absolute bottom-8 left-8">
+              <p className="text-white/40 text-xs uppercase tracking-widest mb-1">Nuestra flota</p>
+              <p className="font-serif text-white text-2xl font-light">ORSA en el muelle</p>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -173,13 +153,20 @@ export default function About() {
       </section>
 
       {/* CTA */}
-      <section className="py-32 px-4">
-        <div className="max-w-3xl mx-auto text-center">
+      <section className="relative py-40 px-4 overflow-hidden">
+        <img
+          src={boatActionImg}
+          alt="ORSA en el embalse de Guatapé"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ objectPosition: "center 45%" }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/60 to-background/40" />
+        <div className="relative z-10 max-w-3xl mx-auto text-center">
           <motion.div {...fadeUp}>
             <h2 className="font-serif text-5xl md:text-6xl font-light text-white mb-6 leading-tight">
               {a.ctaTitle}
             </h2>
-            <p className="text-white/60 mb-12 text-lg font-light">{a.ctaSubtitle}</p>
+            <p className="text-white/70 mb-12 text-lg font-light">{a.ctaSubtitle}</p>
             <Link
               href="/#experiencias"
               className="inline-flex items-center gap-3 px-12 py-5 bg-primary text-background hover:bg-primary/90 transition-all duration-300 uppercase tracking-widest text-sm font-bold"
