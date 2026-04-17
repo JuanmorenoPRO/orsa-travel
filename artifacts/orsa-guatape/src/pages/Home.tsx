@@ -28,7 +28,7 @@ const stagger = {
   viewport: { once: true },
 };
 
-const heroVideos = [heroVideo1, heroVideo2];
+const heroVideos = [midSectionVideo, heroVideo2];
 
 const featureIcons = [
   <ShieldCheck className="w-5 h-5" />,
@@ -334,7 +334,7 @@ export default function Home() {
             preload="auto"
             className="w-full h-full object-cover"
           >
-            <source src={midSectionVideo} type="video/mp4" />
+            <source src={heroVideo1} type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-background/60 flex items-center justify-center">
             <motion.div {...fadeUp} className="text-center max-w-2xl px-4">
