@@ -35,9 +35,10 @@ export default function About() {
       {/* HERO */}
       <section className="relative h-[60vh] min-h-[420px] overflow-hidden">
         <img
-          src={embalseImg}
+          src={boatActionImg}
           alt="ORSA Guatapé"
           className="w-full h-full object-cover"
+          style={{ objectPosition: "center 45%" }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20" />
         <div className="absolute bottom-0 left-0 right-0 p-8 md:p-16 max-w-5xl mx-auto">
@@ -153,20 +154,13 @@ export default function About() {
       </section>
 
       {/* CTA */}
-      <section className="relative py-40 px-4 overflow-hidden">
-        <img
-          src={boatActionImg}
-          alt="ORSA en el embalse de Guatapé"
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ objectPosition: "center 45%" }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/60 to-background/40" />
-        <div className="relative z-10 max-w-3xl mx-auto text-center">
+      <section className="py-32 px-4">
+        <div className="max-w-3xl mx-auto text-center">
           <motion.div {...fadeUp}>
             <h2 className="font-serif text-5xl md:text-6xl font-light text-white mb-6 leading-tight">
               {a.ctaTitle}
             </h2>
-            <p className="text-white/70 mb-12 text-lg font-light">{a.ctaSubtitle}</p>
+            <p className="text-white/60 mb-12 text-lg font-light">{a.ctaSubtitle}</p>
             <Link
               href="/#experiencias"
               className="inline-flex items-center gap-3 px-12 py-5 bg-primary text-background hover:bg-primary/90 transition-all duration-300 uppercase tracking-widest text-sm font-bold"
