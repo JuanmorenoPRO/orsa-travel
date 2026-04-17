@@ -1,13 +1,21 @@
 import { Link } from 'wouter';
 import { Instagram, MapPin, Phone, ArrowRight } from 'lucide-react';
 import logoImg from '@assets/logo_1775523360540.jpeg';
-import embalseImg from '@assets/experiencia_embalse_1775523360540.jpeg';
-import wakeboardImg from '@assets/experiecia_wakeboard_1775523360538.jpeg';
 import { useT } from '@/i18n/useT';
+import pub1 from '@assets/pub1_1776451912635.png';
+import pub2 from '@assets/pub2_1776451912635.png';
+import pub3 from '@assets/pub3_1776451912636.png';
+import pub4 from '@assets/pub4_1776451912637.png';
+import pub5 from '@assets/pub5_1776451912637.png';
+import pub6 from '@assets/pub6_1776451912637.png';
 
-const igPhotos = [
-  embalseImg, wakeboardImg, embalseImg,
-  wakeboardImg, embalseImg, wakeboardImg,
+const igPosts = [
+  { img: pub1, url: 'https://www.instagram.com/p/DXMbKTokiYW/' },
+  { img: pub2, url: 'https://www.instagram.com/p/DXK6DT0Eb5i/' },
+  { img: pub3, url: 'https://www.instagram.com/p/DXKbuH3mnKU/?img_index=1' },
+  { img: pub4, url: 'https://www.instagram.com/p/DXFfm5qgTqh/?img_index=1' },
+  { img: pub5, url: 'https://www.instagram.com/p/DW9znH5gTZU/' },
+  { img: pub6, url: 'https://www.instagram.com/p/DW7PxxtARcj/?img_index=1' },
 ];
 
 export function Footer() {
@@ -36,17 +44,17 @@ export function Footer() {
 
             {/* 3×2 photo grid */}
             <div className="grid grid-cols-3 gap-1 mb-4">
-              {igPhotos.map((img, i) => (
+              {igPosts.map((post, i) => (
                 <a
                   key={i}
-                  href="https://www.instagram.com/orsa_travel?igsh=NmVzMmNobnFvc21k"
+                  href={post.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group relative aspect-square overflow-hidden"
                 >
                   <img
-                    src={img}
-                    alt={`ORSA Guatapé ${i + 1}`}
+                    src={post.img}
+                    alt={`ORSA Guatapé publicación ${i + 1}`}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-background/0 group-hover:bg-background/40 transition-colors duration-300 flex items-center justify-center">
