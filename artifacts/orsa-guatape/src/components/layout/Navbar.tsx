@@ -29,6 +29,7 @@ export function Navbar() {
     { name: t.nav.adrenaline, path: '/experiencia/adrenaline' },
     { name: t.nav.signature, path: '/experiencia/signature' },
     { name: t.nav.about, path: '/acerca-de' },
+    { name: t.nav.policies, path: '/politicas' },
   ];
 
   const handleReservar = () => {
