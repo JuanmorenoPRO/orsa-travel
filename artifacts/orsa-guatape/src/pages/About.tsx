@@ -3,6 +3,8 @@ import { Shield, Star, Crown } from "lucide-react";
 import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
 import embalseImg from "@assets/experiencia_embalse_1775523360540.jpeg";
+import boatDockImg from "@assets/WhatsApp_Image_2026-04-17_at_10.26.59_1776441761484.jpeg";
+import boatActionImg from "@assets/WhatsApp_Image_2026-04-17_at_08.10.43_1776441770135.jpeg";
 import { useT } from "@/i18n/useT";
 
 const fadeUp = {
@@ -79,16 +81,61 @@ export default function About() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative"
             >
-              <div className="aspect-[4/5] relative overflow-hidden">
+              <div className="aspect-[4/5] relative overflow-hidden rounded-sm">
                 <img
-                  src={embalseImg}
-                  alt="ORSA en el embalse"
+                  src={boatDockImg}
+                  alt="Lancha ORSA en el muelle"
                   className="w-full h-full object-cover"
+                  style={{ objectPosition: "center 40%" }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
               </div>
               <div className="absolute -bottom-6 -left-6 glassmorphism p-6 max-w-xs">
                 <p className="font-serif text-3xl text-primary font-light">{a.storyQuote}</p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* PHOTO GALLERY */}
+      <section className="pb-24 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <motion.div
+              {...fadeUp}
+              transition={{ duration: 0.8 }}
+              className="relative overflow-hidden rounded-sm group"
+              style={{ height: 480 }}
+            >
+              <img
+                src={boatDockImg}
+                alt="Lancha ORSA en el muelle de Guatapé"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                style={{ objectPosition: "center 40%" }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
+              <div className="absolute bottom-6 left-6">
+                <p className="text-white/40 text-xs uppercase tracking-widest mb-1">Nuestra flota</p>
+                <p className="font-serif text-white text-xl font-light">ORSA en el muelle</p>
+              </div>
+            </motion.div>
+            <motion.div
+              {...fadeUp}
+              transition={{ duration: 0.8, delay: 0.15 }}
+              className="relative overflow-hidden rounded-sm group"
+              style={{ height: 480 }}
+            >
+              <img
+                src={boatActionImg}
+                alt="Lancha ORSA navegando en el embalse con El Peñol de fondo"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                style={{ objectPosition: "center 50%" }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
+              <div className="absolute bottom-6 left-6">
+                <p className="text-white/40 text-xs uppercase tracking-widest mb-1">En acción</p>
+                <p className="font-serif text-white text-xl font-light">El Peñol como escenario</p>
               </div>
             </motion.div>
           </div>
