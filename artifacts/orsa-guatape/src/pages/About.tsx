@@ -48,11 +48,6 @@ export default function About() {
             transition={{ duration: 0.9 }}
           >
             <p className="text-primary uppercase tracking-[0.4em] text-xs mb-4">{a.heroTag}</p>
-            <h1 className="font-serif text-5xl md:text-7xl font-light text-white mb-3 leading-tight">
-              {a.heroTitle1}
-              <br />
-              <span className="italic text-white/60">{a.heroTitle2}</span>
-            </h1>
             <p className="text-white/50 text-lg font-light">{a.heroSubtitle}</p>
           </motion.div>
         </div>
