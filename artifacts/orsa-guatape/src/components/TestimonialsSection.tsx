@@ -3,9 +3,14 @@ import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Quote, Star, Anchor, ArrowRight } from "lucide-react";
 import embalseImg from "@assets/experiencia_embalse_1775523360540.jpeg";
 import wakeboardImg from "@assets/experiecia_wakeboard_1775523360538.jpeg";
+import clientPhoto1 from "@assets/WhatsApp_Image_2026-04-17_at_10.26.58_1776440436601.jpeg";
+import clientPhoto2 from "@assets/WhatsApp_Image_2026-04-17_at_10.37.09_(1)_1776440449441.jpeg";
+import clientPhoto3 from "@assets/WhatsApp_Image_2026-04-17_at_10.37.09_1776440459402.jpeg";
 import { useT } from "@/i18n/useT";
 
 const bgImages = [embalseImg, wakeboardImg, embalseImg];
+
+const photoStrip = [clientPhoto1, clientPhoto2, clientPhoto3, clientPhoto1, clientPhoto2, clientPhoto3];
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -44,7 +49,6 @@ export function TestimonialsSection() {
       <div className="relative w-full py-14 px-6 overflow-hidden"
         style={{ background: "linear-gradient(135deg, #0A1A3D 0%, #112650 40%, #7B5C12 100%)" }}
       >
-        {/* subtle noise texture overlay */}
         <div className="absolute inset-0 opacity-5"
           style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }}
         />
@@ -76,9 +80,37 @@ export function TestimonialsSection() {
         </div>
       </motion.div>
 
+      {/* ── ROLLING PHOTO STRIP ── */}
+      <div className="relative bg-background pb-10 overflow-hidden">
+        <div
+          className="flex gap-3"
+          style={{
+            width: "max-content",
+            animation: "orsa-scroll 22s linear infinite",
+          }}
+        >
+          {photoStrip.map((src, i) => (
+            <div
+              key={i}
+              className="relative shrink-0 w-52 h-72 md:w-64 md:h-80 overflow-hidden rounded-lg"
+            >
+              <img
+                src={src}
+                alt={`Experiencia ORSA ${(i % 3) + 1}`}
+                className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent" />
+            </div>
+          ))}
+        </div>
+        {/* fade edges */}
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-background to-transparent z-10" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-background to-transparent z-10" />
+      </div>
+
       {/* ── MAIN TESTIMONIAL BLOCK ── */}
       <div className="relative min-h-[620px] md:min-h-[680px] flex flex-col md:flex-row items-stretch overflow-hidden">
-        {/* Background image — full bleed */}
+        {/* Background image */}
         <div className="absolute inset-0 z-0">
           <img
             src={bgImages[active]}
@@ -86,7 +118,6 @@ export function TestimonialsSection() {
             className="w-full h-full object-cover transition-all duration-1000"
             style={{ opacity: fading ? 0 : 1 }}
           />
-          {/* Strong left gradient so text on image doesn't clash */}
           <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-background/20" />
           <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-background/30" />
         </div>
@@ -128,19 +159,13 @@ export function TestimonialsSection() {
               WebkitBackdropFilter: "blur(24px)",
             }}
           >
-            {/* Card inner */}
             <div className="p-8 md:p-10">
-              {/* Stars */}
               <div className="flex gap-1 mb-6">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} className="w-4 h-4 fill-primary text-primary" />
                 ))}
               </div>
-
-              {/* Quote mark */}
               <Quote className="w-8 h-8 text-primary/30 mb-4" />
-
-              {/* Quote text — fades in/out on slide */}
               <div
                 className="transition-all duration-300"
                 style={{ opacity: fading ? 0 : 1, transform: fading ? "translateY(8px)" : "translateY(0)" }}
@@ -151,13 +176,8 @@ export function TestimonialsSection() {
                 <p className="text-white/60 text-sm font-light leading-relaxed mb-8">
                   {current.detail}
                 </p>
-
-                {/* Divider */}
                 <div className="w-12 h-px bg-primary/40 mb-6" />
-
-                {/* Author */}
                 <div className="flex items-center gap-4">
-                  {/* Avatar circle */}
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary/40 to-primary/10 border border-primary/30 flex items-center justify-center shrink-0">
                     <span className="font-serif text-sm text-primary font-medium">{current.initials}</span>
                   </div>
@@ -169,10 +189,7 @@ export function TestimonialsSection() {
                 </div>
               </div>
             </div>
-
-            {/* Card footer — controls */}
             <div className="px-8 md:px-10 py-5 border-t border-white/8 flex items-center justify-between">
-              {/* Dots */}
               <div className="flex gap-2">
                 {testimonials.map((_, i) => (
                   <button
@@ -187,7 +204,6 @@ export function TestimonialsSection() {
                   />
                 ))}
               </div>
-              {/* Arrows */}
               <div className="flex gap-2">
                 <button
                   onClick={() => go(active - 1)}

@@ -226,3 +226,8 @@ html {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-[#C9A84C] to-[#E5C97A];
   }
 }
+
+@keyframes orsa-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
