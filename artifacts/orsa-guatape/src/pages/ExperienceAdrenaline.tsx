@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Zap, Shield, Users, Clock, MapPin, ChevronRight, Star } from "lucide-react";
-import wakeboardImg from "@assets/experiecia_wakeboard_1775523360538.jpeg";
-import donaImg from "@assets/experiencia_dona_1775523360540.jpeg";
+import wakeboardImg from "@assets/wakeboard_1776435753649.jpeg";
+import donaImg from "@assets/dona_1776435744374.jpeg";
 import ReservationForm from "@/components/ReservationForm";
 import { useT } from "@/i18n/useT";
 
@@ -49,6 +49,48 @@ export default function ExperienceAdrenaline() {
             <p className="text-white/80 text-xl md:text-2xl font-light leading-relaxed mb-6">{a.introP1}</p>
             <p className="text-white/40 font-light italic">{a.introP2}</p>
           </motion.div>
+        </div>
+      </section>
+
+      {/* GALLERY STRIP */}
+      <section className="px-4 pb-16" data-testid="section-gallery">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 gap-3">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="relative aspect-[3/4] overflow-hidden group"
+            >
+              <img
+                src={wakeboardImg}
+                alt="Wakeboard en el embalse de Guatapé"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
+              <div className="absolute bottom-4 left-4">
+                <span className="text-xs uppercase tracking-widest text-primary font-medium">Wakeboard</span>
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="relative aspect-[3/4] overflow-hidden group"
+            >
+              <img
+                src={donaImg}
+                alt="Dona inflable en el embalse de Guatapé"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
+              <div className="absolute bottom-4 left-4">
+                <span className="text-xs uppercase tracking-widest text-primary font-medium">Dona Inflable</span>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
