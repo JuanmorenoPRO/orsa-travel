@@ -1,0 +1,2 @@
+name = "orsa-travel"
+pages_build_output_dir = "artifacts/orsa-guatape/dist/public"
