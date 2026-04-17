@@ -33,14 +33,25 @@ export default function About() {
   return (
     <div className="bg-background text-foreground pt-20">
       {/* HERO */}
-      <section className="relative h-[60vh] min-h-[420px] overflow-hidden">
+      <section className="relative h-[65vh] min-h-[460px] overflow-hidden">
         <img
           src={boatActionImg}
           alt="ORSA Guatapé"
           className="w-full h-full object-cover"
-          style={{ objectPosition: "center center" }}
+          style={{ objectPosition: "center 65%" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-background/10" />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="font-serif text-5xl md:text-7xl lg:text-8xl font-light text-white text-center leading-tight px-4"
+          >
+            Acerca de{" "}
+            <span className="italic text-white/60">nosotros…</span>
+          </motion.h1>
+        </div>
       </section>
 
       {/* STORY */}
