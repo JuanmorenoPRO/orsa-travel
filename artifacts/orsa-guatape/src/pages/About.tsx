@@ -38,19 +38,9 @@ export default function About() {
           src={boatActionImg}
           alt="ORSA Guatapé"
           className="w-full h-full object-cover"
-          style={{ objectPosition: "center 45%" }}
+          style={{ objectPosition: "center center" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20" />
-        <div className="absolute bottom-0 left-0 right-0 p-8 md:p-16 max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9 }}
-          >
-            <p className="text-primary uppercase tracking-[0.4em] text-xs mb-4">{a.heroTag}</p>
-            <p className="text-white/50 text-lg font-light">{a.heroSubtitle}</p>
-          </motion.div>
-        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
       </section>
 
       {/* STORY */}
