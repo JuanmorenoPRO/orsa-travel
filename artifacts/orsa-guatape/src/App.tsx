@@ -7,6 +7,7 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
+import { MusicButton } from "@/components/layout/MusicButton";
 import Home from "@/pages/Home";
 import ExperienceHorizon from "@/pages/ExperienceHorizon";
 import ExperienceAdrenaline from "@/pages/ExperienceAdrenaline";
@@ -43,6 +44,7 @@ function Router() {
       </main>
       <Footer />
       <WhatsAppButton />
+      <MusicButton />
     </>
   );
 }
