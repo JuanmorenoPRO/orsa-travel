@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'wouter';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import logoImg from '@assets/logo_1775523360540.jpeg';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useT } from '@/i18n/useT';
 import ReservationChoice from '@/components/ReservationChoice';
@@ -59,13 +58,14 @@ export function Navbar() {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }
             }}
-            className="flex items-center gap-3 z-50"
+            className="group flex flex-col items-start gap-0.5 z-50"
           >
-            <img src={logoImg} alt="ORSA Guatapé" className="h-10 w-auto object-contain" />
-            <div className="flex flex-col">
-              <span className="font-serif text-2xl font-bold tracking-wider text-white leading-none">ORSA</span>
-              <span className="text-[10px] tracking-[0.3em] text-primary uppercase leading-none mt-1">Guatapé</span>
-            </div>
+            <img
+              src="/logo_orsa.png"
+              alt="ORSA"
+              className="h-8 w-auto object-contain invert transition-opacity duration-500 group-hover:opacity-70"
+            />
+            <span className="text-[9px] tracking-[0.35em] text-primary uppercase leading-none ml-[4px]">Guatapé</span>
           </Link>
 
           {/* Desktop Nav */}
