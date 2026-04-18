@@ -45,7 +45,7 @@ export function MusicButton() {
 
   return (
     <>
-      <audio ref={audioRef} src="/song_1.mp3" loop preload="auto" />
+      <audio ref={audioRef} src="/song.mp3" loop preload="auto" />
       <button
         onClick={toggle}
         aria-label={muted ? 'Reproducir música' : 'Silenciar música'}
