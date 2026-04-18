@@ -369,7 +369,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-white/30 uppercase tracking-[0.4em] text-xs mb-8">{t.home.alliesTag}</p>
           <div className="flex flex-wrap justify-center gap-8 text-white/40">
-            {["MYLOS Hotel Boutique", "Gretel Chalets", "Peregrino Restobar", "Magmare", "Chiringuito Español"].map((ally) => (
+            {["MYLOS Hotel Boutique", "Gretel Chalets", "Peregrino Restobar", "Magmare", "Chiringuito Español", "Rodar Coffee"].map((ally) => (
               <span key={ally} className="text-sm uppercase tracking-wider hover:text-white/70 transition-colors cursor-default">
                 {ally}
               </span>
