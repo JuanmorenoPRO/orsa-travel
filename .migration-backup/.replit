@@ -1,5 +1,11 @@
 modules = ["nodejs-24"]
 
+[[artifacts]]
+id = "artifacts/api-server"
+
+[[artifacts]]
+id = "artifacts/mockup-sandbox"
+
 [deployment]
 router = "application"
 deploymentTarget = "autoscale"
