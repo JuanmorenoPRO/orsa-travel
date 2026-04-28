@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Zap, Shield, Users, Clock, MapPin, ChevronRight, Star } from "lucide-react";
-import heroImg from "@assets/adrenaline_1776437387102.jpeg";
 import wakeboardImg from "@assets/wakeboard_1776435753649.jpeg";
 import donaImg from "@assets/dona_1776435744374.jpeg";
 import ReservationForm from "@/components/ReservationForm";
 import { useT } from "@/i18n/useT";
+import { useMusic } from "@/contexts/MusicContext";
 
 const fadeUp = {
   initial: { opacity: 0, y: 40 },
@@ -27,12 +27,29 @@ export default function ExperienceAdrenaline() {
   const [showForm, setShowForm] = useState(false);
   const t = useT();
   const a = t.adrenaline;
+  const { pause, resume } = useMusic();
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    pause();
+    return () => {
+      resume();
+    };
+  }, [pause, resume]);
 
   return (
     <div className="bg-background text-foreground pt-20">
       {/* HERO */}
       <section className="relative h-[80vh] min-h-[500px] overflow-hidden" data-testid="hero-adrenaline">
-        <img src={heroImg} alt="ORSA Adrenaline - Wakeboard" className="w-full h-full object-cover" style={{ objectPosition: "center 60%" }} />
+        <video
+          ref={videoRef}
+          src="/video_adrenaline.mp4"
+          autoPlay
+          loop
+          playsInline
+          className="w-full h-full object-cover"
+          style={{ objectPosition: "center 60%" }}
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-background/20" />
         <div className="absolute bottom-0 left-0 right-0 p-8 md:p-16 max-w-5xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9 }}>
