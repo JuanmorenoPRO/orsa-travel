@@ -8,6 +8,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
 import { MusicButton } from "@/components/layout/MusicButton";
+import { MusicProvider } from "@/contexts/MusicContext";
 import Home from "@/pages/Home";
 import ExperienceHorizon from "@/pages/ExperienceHorizon";
 import ExperienceAdrenaline from "@/pages/ExperienceAdrenaline";
@@ -54,10 +55,12 @@ function App() {
     <LanguageProvider>
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
-          <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
-            <Router />
-          </WouterRouter>
-          <Toaster />
+          <MusicProvider>
+            <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+              <Router />
+            </WouterRouter>
+            <Toaster />
+          </MusicProvider>
         </TooltipProvider>
       </QueryClientProvider>
     </LanguageProvider>

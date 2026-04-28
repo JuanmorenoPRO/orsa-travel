@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
-import { Zap, Shield, Users, Clock, MapPin, ChevronRight, Star } from "lucide-react";
-import heroImg from "@assets/adrenaline_1776437387102.jpeg";
+import { useState, useEffect, useRef } from "react";
+import { Zap, Shield, Users, Clock, MapPin, ChevronRight, Star, Volume2, VolumeX } from "lucide-react";
+import { useMusic } from "@/contexts/MusicContext";
 import wakeboardImg from "@assets/wakeboard_1776435753649.jpeg";
 import donaImg from "@assets/dona_1776435744374.jpeg";
 import ReservationForm from "@/components/ReservationForm";
@@ -25,15 +25,62 @@ const highlightIcons = [
 
 export default function ExperienceAdrenaline() {
   const [showForm, setShowForm] = useState(false);
+  const [videoMuted, setVideoMuted] = useState(true);
   const t = useT();
   const a = t.adrenaline;
+  const { pause, resume } = useMusic();
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    pause();
+    return () => {
+      resume();
+    };
+  }, [pause, resume]);
+
+  useEffect(() => {
+    const unmute = () => {
+      const video = videoRef.current;
+      if (!video) return;
+      video.muted = false;
+      setVideoMuted(false);
+    };
+    const events = ['click', 'scroll', 'touchstart', 'keydown'] as const;
+    events.forEach((e) => document.addEventListener(e, unmute, { once: true }));
+    return () => {
+      events.forEach((e) => document.removeEventListener(e, unmute));
+    };
+  }, []);
+
+  function toggleVideoMute() {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = !video.muted;
+    setVideoMuted(video.muted);
+  }
 
   return (
     <div className="bg-background text-foreground pt-20">
       {/* HERO */}
       <section className="relative h-[80vh] min-h-[500px] overflow-hidden" data-testid="hero-adrenaline">
-        <img src={heroImg} alt="ORSA Adrenaline - Wakeboard" className="w-full h-full object-cover" style={{ objectPosition: "center 60%" }} />
+        <video
+          ref={videoRef}
+          src="/adrenaline.mov"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+          style={{ objectPosition: "center 60%" }}
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-background/20" />
+        <button
+          onClick={toggleVideoMute}
+          aria-label={videoMuted ? 'Activar audio del video' : 'Silenciar video'}
+          className="absolute top-6 right-6 bg-background/60 hover:bg-background/80 border border-white/20 text-white/80 hover:text-white p-3 rounded-full backdrop-blur-sm transition-all duration-200"
+        >
+          {videoMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
+        </button>
         <div className="absolute bottom-0 left-0 right-0 p-8 md:p-16 max-w-5xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9 }}>
             <p className="text-primary uppercase tracking-[0.4em] text-xs mb-4">{a.heroTag}</p>
