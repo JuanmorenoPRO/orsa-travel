@@ -65,7 +65,7 @@ export default function ExperienceAdrenaline() {
       <section className="relative h-[80vh] min-h-[500px] overflow-hidden" data-testid="hero-adrenaline">
         <video
           ref={videoRef}
-          src="/adrenaline.mov"
+          src="/adrenaline.mp4"
           autoPlay
           loop
           muted
