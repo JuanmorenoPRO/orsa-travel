@@ -6,6 +6,7 @@ interface MusicContextValue {
   audioRef: React.RefObject<HTMLAudioElement | null>;
   isMuted: boolean;
   setMuted: (v: boolean) => void;
+  isPausedExternally: boolean;
 }
 
 const MusicContext = createContext<MusicContextValue | null>(null);
@@ -13,6 +14,7 @@ const MusicContext = createContext<MusicContextValue | null>(null);
 export function MusicProvider({ children }: { children: React.ReactNode }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isMuted, setMuted] = useState(false);
+  const [isPausedExternally, setIsPausedExternally] = useState(false);
   const isMutedRef = useRef(false);
   const startedRef = useRef(false);
 
@@ -44,17 +46,19 @@ export function MusicProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const pause = useCallback(() => {
+    setIsPausedExternally(true);
     audioRef.current?.pause();
   }, []);
 
   const resume = useCallback(() => {
+    setIsPausedExternally(false);
     if (!isMutedRef.current) {
       audioRef.current?.play().catch(() => {});
     }
   }, []);
 
   return (
-    <MusicContext.Provider value={{ pause, resume, audioRef, isMuted, setMuted }}>
+    <MusicContext.Provider value={{ pause, resume, audioRef, isMuted, setMuted, isPausedExternally }}>
       <audio ref={audioRef} src="/song.mp3" loop preload="auto" />
       {children}
     </MusicContext.Provider>

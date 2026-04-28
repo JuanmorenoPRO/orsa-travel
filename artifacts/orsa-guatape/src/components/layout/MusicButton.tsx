@@ -2,7 +2,9 @@ import { Volume2, VolumeX } from 'lucide-react';
 import { useMusic } from '@/contexts/MusicContext';
 
 export function MusicButton() {
-  const { audioRef, isMuted, setMuted } = useMusic();
+  const { audioRef, isMuted, setMuted, isPausedExternally } = useMusic();
+
+  if (isPausedExternally) return null;
 
   function toggle() {
     const audio = audioRef.current;

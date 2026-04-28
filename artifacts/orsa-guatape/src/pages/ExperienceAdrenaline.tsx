@@ -46,6 +46,7 @@ export default function ExperienceAdrenaline() {
           src="/video_adrenaline.mp4"
           autoPlay
           loop
+          muted
           playsInline
           className="w-full h-full object-cover"
           style={{ objectPosition: "center 60%" }}
